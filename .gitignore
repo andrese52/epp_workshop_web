@@ -1,0 +1,77 @@
+ngg_unix_morning/*~
+ngg_unix_morning/.ipynb_checkpoints/*
+ngg_unix_morning/*.fasta
+ngg_unix_morning/*.gz
+ngg_unix_morning/*feature.tab
+ngg_unix_morning/*.png
+README.md~
+.gitignore~
+
+
+afternoon/*~
+afternoon/.ipynb_checkpoints/*
+afternoon/*.fasta
+afternoon/*.gz
+afternoon/*feature.tab
+
+# Andres Windows
+
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# =========================
+# Operating System Files
+# =========================
+
+# OSX
+# =========================
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+#Github scripts
+git-commands.sh
+
+#Fasta files
+*.fasta
+*.fna
+*.fast5
+
+#Latex
+*.tex
+
+
