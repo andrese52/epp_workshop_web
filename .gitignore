@@ -6,7 +6,7 @@ ngg_unix_morning/*feature.tab
 ngg_unix_morning/*.png
 README.md~
 .gitignore~
-
+content/morning/_index_en.md~
 
 afternoon/*~
 afternoon/.ipynb_checkpoints/*
