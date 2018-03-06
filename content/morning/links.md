@@ -5,7 +5,7 @@ chapter: false
 pre: "<b>3.1 </b>"
 ---
 
-## There are so many resources available for free online! Here, I am sharing the websites that were very useful for me when I was starting out:
+### There are so many resources available for free online! Here, I am sharing the websites that were very useful for me when I was starting out:
 
 The HPCC new user tutorial: https://hpcc.okstate.edu/sites/default/files/Files/tutorial.pdf and Education Resources: https://hpcc.okstate.edu/content/hpc-education-resources
 
