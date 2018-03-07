@@ -15,7 +15,7 @@ I want to give you a little pep talk before you dive into the lectures:
 
 + You'll only learn by doing it! So practice, practice, and practice... I mean practice a lot!
 + There are many ways to do the same thing and achieve the same results.
-+ Treat your code as experiments.
++ Treat your code as experiments. Write one line, test run it for easy debugging. 
 + Errors are not bad! Often, errors point you to the right direction.
 + If you don't know, ask Google!
 

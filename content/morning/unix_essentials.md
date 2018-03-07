@@ -2,12 +2,9 @@
 title: Unix essentials
 weight: 10
 chapter: false
-pre: "<b>2.3 </b>"
+pre: "<b>2.4 </b>"
 ---
 
 Let's jump right into it!
 
-```bash
-$ whoaim
-```
-	nathalia
+
