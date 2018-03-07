@@ -48,7 +48,7 @@ $ cat mgrisea_mat1_aa.txt
 
 ### Standard output
 
-The results or output of these commands are  printed on the screen (stdout).
+The results or output of these commands are printed on the screen (stdout).
 
 The stdout on the screen means that:
 
@@ -84,6 +84,78 @@ $ pwd
 
 > What kind of path is this?
 
+
++ Directory listing. `ls` lists files and directories in your current directory
+
+```bash
+$ ls
+```
+
+> This prints the listing to the screen. If empty, won't print anything.
+
+`ls` is a command that has *options*. *Options* modify the default behavior of a command. In the case of `ls`, use options consisting of a dash and one or more characters such as `ls -l`
+
+
+```bash
+$ ls -l
+```
+
+> Did you notice a different in listing display?
+
+* You: Natty, I love options. I wanna see all options! *
+
+You can check out the manual page for all the options available for `ls` and any other command.
+`man` opens up the manual page of any command as a kind of pop-up window.
+
+```bash
+$ man ls
+```
+
+	 LS(1)                            User Commands                           LS(1)
+
+        NAME
+        ls - list directory contents
+
+        SYNOPSIS
+        ls [OPTION]... [FILE]...
+
+        DESCRIPTION
+        List  information  about the FILEs (the current directory by default).  Sort entries alphabetically if none of
+        -cftuvSUX nor --sort.
+
+        Mandatory arguments to long options are mandatory for short options too.
+
+	-a, --all
+              do not ignore entries starting with .
+
+        -A, --almost-all
+              do not list implied . and ..
+
+        --author
+              with -l, print the author of each file
+
+        -b, --escape
+              print octal escapes for nongraphic characters
+
+        --block-size=SIZE
+              use SIZE-byte blocks.  See SIZE format below
+
+	-B, --ignore-backups
+              do not list implied entries ending with ~
+
+        -c     with -lt: sort by, and show, ctime (time of last modification of file status information) with -l: show
+              ctime and sort by name otherwise: sort by ctime
+        (...)
+
+
+* You: But, Nathy, what's your favorite flag?
+Natty: I am so glad you asked!*
+
+```bash
+$ ls -lhtr'
+```
+
+> Test it out. Search the `man` pages, and figure out what each options does.
 
 
 
