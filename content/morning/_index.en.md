@@ -19,4 +19,4 @@ I want to give you a little pep talk before you dive into the lectures:
 + Errors are not bad! Often, errors point you to the right direction.
 + If you don't know, ask Google!
 
-Warm up your finger tips, my friends! Let's log in and get started!
+Warm up your finger tips, my friends! [Let's log in](../start/_index.md) and [get started](./unix_essentials)!!
