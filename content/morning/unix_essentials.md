@@ -1,6 +1,6 @@
 ---
 title: Unix essentials
-weight: 10
+weight: 4
 chapter: false
 pre: "<b>2.4 </b>"
 ---

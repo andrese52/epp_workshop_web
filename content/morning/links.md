@@ -1,6 +1,6 @@
 ---
 title: Resources for new users
-weight: 10
+weight: 1
 chapter: false
 pre: "<b>2.1 </b>"
 ---

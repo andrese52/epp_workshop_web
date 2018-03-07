@@ -1,6 +1,6 @@
 ---
 title: Afternoon Session
-weight: 10
+weight: 3
 chapter: false
 pre: "<b>3. </b>"
 ---

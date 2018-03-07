@@ -1,6 +1,6 @@
 ---
 title: Morning Session
-weight: 10
+weight: 2
 pre: "<b>2. </b>"
 chapter: false
 ---
