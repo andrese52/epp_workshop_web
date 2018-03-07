@@ -1,5 +1,5 @@
 ---
-title: Morning Session
+title: Unix overview
 weight: 10
 chapter: false
 pre: "<b>2.3 </b>"
@@ -13,14 +13,14 @@ Use your arrow keys to move your cursor  :arrow_left: :arrow_up: :arrow_down: :a
 
 This is your shell prompt, and it looks like this whenever it's ready to accept your commands (input):
 
-``bash
+```bash
 *your_username_here* $
 
 When you have your prompt, you *communicate* with the computer by typing a command and hitting `enter` to run it.
 
 In computer words, 'typing a command' is accepting input your keyboard (from you). This is called **standard input** (stdin).
 
-When you run a command, the computer prints the output of that command to the screen. This is called ** standard output** (stdout).  
+When you run a command, the computer prints the output of that command to the screen. This is called **standard output** (stdout).  
 
 
 ### Standard Input 
@@ -39,9 +39,10 @@ The majority of the commands we'll use, e.g. `cat` and `less`, require that you 
 ```bash
 $ cat mgrisea_mat1_aa.txt
 ```
-	\>lcl|AB080670.2_prot_BAC65087.1_1_[gene=MAT1-1-1]_alpha_box
-	 MIASLSPDDIARLIPQETLTSLLRANDEKERLRELPVSPRAVAAASKNKKKVNGFMAFRSYYAGIFQDRPQKERSPFITLLWQKETLKSRWTLMANVFSRIRDFAGTTRGRMAMSGFLRVACPLLGITKPCDYLRRYNWELEFVADASAPYDAAMKYEISQSQIPHIVDEFEVPTTEIELLRACVQGGFPFENSAQLLRDMEDSSVTVMTRTAPIMAPSHASQASHGQHNHHFINTLINDPDAAISALLPQDEDIGSLMVDMNIIHSLETDSSTTSSARNSVSPLEQHLFFHEDVSIDPSTMVSFPGEGHGHPETQYSYPNPTLGLW
+	>lcl|AB080670.2_prot_BAC65087.1_1_[gene=MAT1-1-1]_alpha_box
+	MIASLSPDDIARLIPQETLTSLLRANDEKERLRELPVSPRAVAAASKNKKKVNGFMAFRSYYAGIFQDRPQKERSPFITLLWQKETLKSRWTLMANVFSRIRDFAGTTRGRMAMSGFLRVACPLLGITKPCDYLRRYNWELEFVADASAPYDAAMKYEISQSQIPHIVDEFEVPTTEIELLRACVQGGFPFENSAQLLRDMEDSSVTVMTRTAPIMAPSHASQASHGQHNHHFINTLINDPDAAISALLPQDEDIGSLMVDMNIIHSLETDSSTTSSARNSVSPLEQHLFFHEDVSIDPSTMVSFPGEGHGHPETQYSYPNPTLGLW
 
+> We'll use `less` in just a moment...
 
 ### Standard output
 
@@ -52,15 +53,16 @@ The stdout on the screen means that:
 + Output is not being stored anywhere in any form  
 + The command is not altering the original data  
 
-
+{{% notice tip %}}
 Hit the `tab` for autocompletion of file names and paths.
 
-
-
-
+Bash keeps history of your commands. Hit the :arrow_up: to scroll through.
+{{% /notice %}}
 
 
 ## Basic commands
+
+
 
 + Who are you?
 
