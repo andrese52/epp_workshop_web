@@ -38,11 +38,14 @@ DNA annotation or genome annotation is the process of identifying the locations 
 
 {{% notice note %}}
 While using coding and bioinformatics, we want to avoid using graphical user interphases (GUIs) as much as we can. Can somebody answer why?
-
 {{% /notice %}}
 
  
- There are exceptions, where we already know the data structure of a file. However, visualizing large datasets as the ones that we are going to download, could be practically impossible since we need to open the whole document to process it.
+Visualizing large datasets (as the ones that we are going to download) could be practically impossible.  Opening the whole document will likely **crash your computer**.
+ 
+ {{< figure src="https://media.giphy.com/media/l3q2Mdm0cRPLPcuGI/giphy.gif" title="" >}}
+ 
+ However, there are exceptions, where we already know the data structure of a file and we can start running codes on it.  
  
  [NCBI](https://www.ncbi.nlm.nih.gov/) which stands for the The National Center for Biotechnology Information helps bioinformaticians by providing access to biomedical and genomic information. This is a GUI which helps people search and process data. This is given the fact that the data has been previously curated by others.
  
