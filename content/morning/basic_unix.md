@@ -14,7 +14,8 @@ Use your arrow keys to move your cursor  :arrow_left: :arrow_up: :arrow_down: :a
 This is your shell prompt, and it looks like this whenever it's ready to accept your commands (input):
 
 ```bash
-*your_username_here* $
+your_username_here $
+``` 
 
 When you have your prompt, you *communicate* with the computer by typing a command and hitting `enter` to run it.
 
@@ -44,25 +45,23 @@ $ cat mgrisea_mat1_aa.txt
 
 > We'll use `less` in just a moment...
 
+
 ### Standard output
 
 The results or output of these commands are  printed on the screen (stdout).
 
 The stdout on the screen means that:
 
-+ Output is not being stored anywhere in any form  
-+ The command is not altering the original data  
+1. Output is not being stored anywhere in any form  
+2. The command is not altering the original data  
 
 {{% notice tip %}}
-Hit the `tab` for autocompletion of file names and paths.
-
-Bash keeps history of your commands. Hit the :arrow_up: to scroll through.
++ Hit the `tab` for autocompletion of file names and paths.
++ Bash keeps history of your commands. Hit the :arrow_up: to scroll through.
 {{% /notice %}}
 
 
-## Basic commands
-
-
+### Basic commands
 
 + Who are you?
 
@@ -73,14 +72,15 @@ $ whoaim
 	nathalia
 
 + Where am I? 
-`pwd` stands for print working directory. It prints where is your current location, aka `path`?
+`pwd` stands for print current working directory. It prints your current *location*, aka `path`.
 
 ```bash
 $ pwd
 ```
 	/home/nathalia 
 
-**What kind of path is this?**
+> What kind of path is this?
+
 
 
 
