@@ -56,10 +56,15 @@ The stdout on the screen means that:
 2. The command is not altering the original data  
 
 {{% notice tip %}}
-+ Hit the `tab` for autocompletion of file names and paths.
-+ Bash keeps history of your commands. Hit the :arrow_up: to scroll through.
+Hit the `tab` for autocompletion of file names and paths.
+
+Bash keeps history of your commands. Hit the :arrow_up: to scroll through.
+
 {{% /notice %}}
 
+{{% notice tip %}}
+A tip disclaimer
+{{% /notice %}}
 
 ### Basic commands
 
