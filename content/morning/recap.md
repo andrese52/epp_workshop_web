@@ -1,11 +1,9 @@
 ---
-title: Quick Recap
+title: Introduction to the Cowboy
 weight: 2
 chapter: false
 pre: "<b>2.2 </b>"
 ---
-
-Let's warm up by reviewing very quickly the commands you learned at the pre-workshop set-up.
 
 **Filesystem** is a term that describes how data in arranged on a computer. It's made out of directories and files. Directory = folder.
 
