@@ -68,11 +68,11 @@ Bash keeps history of your commands. Hit the up-arrow key to scroll through.
 
 ### Basic commands
 
-+ Who are you? `whoami` prints your username.
++ Who are you? `whoami` prints your username.  
 ```bash
 $ whoaim
 ```
-	nathalia
+		nathalia
 
 + Where am I? `pwd` stands for print current working directory. It prints your current *location*, aka `path`.
 
@@ -146,10 +146,10 @@ $ man ls
         (...)
 
 
-> Hit `q` to exit and return to the command-line.
+Hit `q` to exit and return to the command-line.
 
-*You: But, Nathy, what's your favorite flag?  
-Natty: I am so glad you asked!*
+>*You: But, Nathy, what's your favorite flag?*  
+>*Natty: I am so glad you asked!*
 
 ```bash
 $ ls -lhtr
@@ -200,19 +200,19 @@ The figure below is a representation of a file system. Let's pause for 2 minutes
 
 >INSERT FILE SYSTEM FIGURE
 
-Your prompt (aka, where we currently are) is in `/home`. Now, try to answer these questions quickly without coding:
-     - What's the command to change directory to `aa_sequences/`?
-     - What's the command to change directory to `cowboy_scripts/`?
-     - What's the command to change directory to `annotation/`?
+Your prompt (aka, where we currently are) is in `/home`. Now, try to answer these questions quickly without coding:  
+     - What's the command to change directory to `aa_sequences/`?  
+     - What's the command to change directory to `cowboy_scripts/`?  
+     - What's the command to change directory to `annotation/`?  
 
-Now, your prompt is in `/annotation`. Try to answer these questions quickly without coding:
-     - What do you see inside this directory?
-     - What's the command to change directory to `workshop_mar17/`?
+Now, your prompt is in `/annotation`. Try to answer these questions quickly without coding:  
+     - What do you see inside this directory?  
+     - What's the command to change directory to `workshop_mar17/`?  
 
 
-Use these `cd` shortcuts:
-1. `./` (dot) represents the current directory
-2. `../` (two dots, no spaces) represents the parent directory
+Use these `cd` shortcuts:  
+`./` (dot) represents the current directory.  
+`../` (two dots, no spaces) represents the parent directory.  
 
 
 Going back to where we were... `/home`
@@ -227,17 +227,16 @@ $ cd workshop_mar17
 
 Let's create a fasta file named `example_sequence.fasta`:
 
-{{% notice tip %}}
+{{% notice notice %}}
 Notice the extension of the file: `.fasta`. Fasta file is just a text file that contains nucleotide or amino acid sequences. We could name this file `example_sequence.txt` that it would be the same. The computer doesn't know `.fasta` extension, it *thinks* this is just a regular text file. Fasta file and many other file extensions used in bioinformatics were created by humans to humans.  
-
- What are the two most important components of a `.fasta` file?
+Tell me what are the two most important components of a `.fasta` file?
 {{% /notice %}}
 
 ```bash
 $ nano example_sequence.fasta
 ```
 
-	  GNU nano 2.0.6                              File: example_sequence.fasta                                                                   
+	  GNU nano 2.0.6                              File: example_sequence.fasta
 
 
 
@@ -249,16 +248,15 @@ $ nano example_sequence.fasta
 
 
 
-                                                                [ New File ]
-         ^G Get Help            ^O WriteOut            ^R Read File           ^Y Prev Page           ^K Cut Text            ^C Cur Pos
-         ^X Exit                ^J Justify             ^W Where Is            ^V Next Page           ^U UnCut Text          ^T To Spell
+                                             [ New File ]
+         ^G Get Help    ^O WriteOut    ^R Read File     ^Y Prev Page     ^K Cut Text        ^C Cur Pos
+         ^X Exit        ^J Justify     ^W Where Is      ^V Next Page     ^U UnCut Text      ^T To Spell
 
 
 
+When you hit `enter`, the text editor appears on your screen. Notice the file name on the top. And on the bottom of the screen, notice keyboard shortcuts... remember that your mouse isn't gonna work here.
 
-When you hit `enter`, the text editor appears on your screen. Notice the file name on the top. And on the bottom of the screen, notice keyboard shortcuts... remember that your mouse isn't gonna work here, honey!
-
-Let's create a hypothetical nucleotide sequences.
+Let's create hypothetical nucleotide sequences.
 
 ```bash
 >hypothetical_nucleotide_1
@@ -269,9 +267,7 @@ ACTAGCTAGCTATTACGGGGGGCTAGCTAGCTAGCGGGATCGATTTA
 ATCGATCGATCGAAAAAATCGATTTTCGATCGATCGATCGA
 ```
 
-Looks fine to me. 
-
-*Natty: I just finish typing the last nucleotide sequence... I don't really like those file names anymore, I wanna change them.*
+I just finish typing the last nucleotide sequence... I don't really like these file names anymore, I wanna change them.*
 
 Use your arrow-keys to change the name of the files:
 
@@ -289,9 +285,9 @@ Great! Looks much better.
 To exit `nano` and save the file, hit `crtl+X`. Notice that a new message appears on the bottom of the screen:
 
 
-      	   Save modified buffer (ANSWERING "No" WILL DESTROY CHANGES) ?                                                                                 
-	   Y Yes
-	   N No           ^C Cancel
+   	       Save modified buffer (ANSWERING "No" WILL DESTROY CHANGES) ?
+	       Y Yes
+	       N No           ^C Cancel
 
 
 Because we just created this file (made changes to it), `nano` is asking if we want to save what we just typed. If all looks good, hit `Y`. 
