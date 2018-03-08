@@ -28,8 +28,8 @@ Some commands are stand-alone, e.g. `date`, `ls`, and `cal`, which means that yo
 
 ```bash
 $ date
+Wed Mar  7 09:39:26 CST 2018
 ```
-	Wed Mar  7 09:39:26 CST 2018
 
 > Try running `cal` and `ls`. What's the output?
 
@@ -37,29 +37,24 @@ The majority of the commands we'll use, e.g. `cat` and `less`, require some inpu
 
 ```bash
 $ cat < mgrisea_mat1_aa.txt
+>lcl|AB080670.2_prot_BAC65087.1_1_[gene=MAT1-1-1]_alpha_box
+MIASLSPDDIARLIPQETLTSLLRANDEKERLRELPVSPRAVAAASKNKKKVNGFMAFRSYYAGIFQDRPQKERSPFITLLWQKETLKSRWTLMANVFSRIRDFAGTTRGRMAMSGFLRVACPLLGITKPCDYLRRYNWELEFVADASAPYDAAMKYEISQSQIPHIVDEFEVPTTEIELLRACVQGGFPFENSAQLLRDMEDSSVTVMTRTAPIMAPSHASQASHGQHNHHFINTLINDPDAAISALLPQDEDIGSLMVDMNIIHSLETDSSTTSSARNSVSPLEQHLFFHEDVSIDPSTMVSFPGEGHGHPETQYSYPNPTLGLW
 ```
-	>lcl|AB080670.2_prot_BAC65087.1_1_[gene=MAT1-1-1]_alpha_box
-	MIASLSPDDIARLIPQETLTSLLRANDEKERLRELPVSPRAVAAASKNKKKVNGFMAFRSYYAGIFQDRPQKERSPFITLLWQKETLKSRWTLMANVFSRIRDFAGTTRGRMAMSGFLRVACPLLGITKPCDYLRRYNWELEFVADASAPYDAAMKYEISQSQIPHIVDEFEVPTTEIELLRACVQGGFPFENSAQLLRDMEDSSVTVMTRTAPIMAPSHASQASHGQHNHHFINTLINDPDAAISALLPQDEDIGSLMVDMNIIHSLETDSSTTSSARNSVSPLEQHLFFHEDVSIDPSTMVSFPGEGHGHPETQYSYPNPTLGLW
-
 or, you can simply omit `>`
 
 ```bash
 $ cat mgrisea_mat1_aa.txt
+>lcl|AB080670.2_prot_BAC65087.1_1_[gene=MAT1-1-1]_alpha_box
+MIASLSPDDIARLIPQETLTSLLRANDEKERLRELPVSPRAVAAASKNKKKVNGFMAFRSYYAGIFQDRPQKERSPFITLLWQKETLKSRWTLMANVFSRIRDFAGTTRGRMAMSGFLRVACPLLGITKPCDYLRRYNWELEFVDASAPYDAAMKYEISQSQIPHIVDEFEVPTTEIELLRACVQGGFPFENSAQLLRDMEDSSVTVMTRTAPIMAPSHASQASHGQHNHHFINTLINDPDAAISALLPQDEDIGSLMVDMNIIHSLETDSSTTSSARNSVSPLEQHLFFHEDVSIDPSTMVSFPGEGHGHPETQYSYPNPTLGLW
 ```
-        >lcl|AB080670.2_prot_BAC65087.1_1_[gene=MAT1-1-1]_alpha_box
-        MIASLSPDDIARLIPQETLTSLLRANDEKERLRELPVSPRAVAAASKNKKKVNGFMAFRSYYAGIFQDRPQKERSPFITLLWQKETLKSRWTLMANVFSRIRDFAGTTRGRMAMSGFLRVACPLLGITKPCDYLRRYNWELEFVDASAPYDAAMKYEISQSQIPHIVDEFEVPTTEIELLRACVQGGFPFENSAQLLRDMEDSSVTVMTRTAPIMAPSHASQASHGQHNHHFINTLINDPDAAISALLPQDEDIGSLMVDMNIIHSLETDSSTTSSARNSVSPLEQHLFFHEDVSIDPSTMVSFPGEGHGHPETQYSYPNPTLGLW
-
-> We'll use `less` in just a moment...
 
 ### Standard output
 
 The results or output of these commands are printed on the screen (stdout).
 
-The stdout on the screen means that:
-
-1. Output is not being stored anywhere in any form  
-2. The command is not altering the original data  
-
+The stdout on the screen means that:   
+1. Output is not being stored anywhere in any form    
+2. The command is not altering the original data    
 
 {{% notice tip %}}
 Hit the `tab` for autocompletion of file names and paths.  
@@ -72,18 +67,17 @@ Bash keeps history of your commands. Hit the up-arrow key to scroll through.
 
 ```bash
 $ whoaim
+nathalia
 ```
-	nathalia
 
 + Where am I? `pwd` stands for print current working directory. It prints your current *location*, aka `path`.
 
 ```bash
 $ pwd
+/home/nathalia 
 ```
-	/home/nathalia 
 
 > What kind of path is this?
-
 
 + Directory listing. `ls` lists files and directories in your current directory
 
@@ -157,17 +151,16 @@ Hit `q` to exit and return to the command-line.
 $ ls -lhtr
 ```
 
-> Test it out. Search the `man` pages, and figure out what each options does.
+>Test it out. Search the `man` pages, and figure out what each options does.
 
-
-+ Creating a directory. `mkdir` stands for make a directory, and it requires input directory name. It should be a new name, never duplicate names. 
++ Creating a directory. `mkdir` stands for make a directory, and it requires input directory name. It should be a new name, never duplicate names.  
 Let's create a directory for our workshop.
 
 ```bash
 $ mkdir workshop_mar17
 ```
 
-> Hit `ls`. What do you see?
+> Hit `ls`.
 
 We created the directory, however we are not inside yet.
 
@@ -177,7 +170,7 @@ We created the directory, however we are not inside yet.
 $ cd workshop_mar17 
 ```
 
-> Hit `pwd`. What do you see?
+> Hit `pwd`.
 
 Let's say we wanted to go back to our `/home`. There are multiple ways to do that:
 
@@ -312,13 +305,12 @@ Because we just created this file (made changes to it), `nano` is asking if we w
 
 Another new message appears:
 
-    	 File Name to Write: example_sequence.fasta                                                                                                   
-	 ^G Get Help   ^T To Files      M-M Mac Format   M-P Prepend
-	 ^C Cancel     M-D DOS Format   M-A Append       M-B Backup File
+	    File Name to Write: example_sequence.fasta                                                                                                   
+	    ^G Get Help   ^T To Files      M-M Mac Format   M-P Prepend
+	    ^C Cancel     M-D DOS Format   M-A Append       M-B Backup File
 
 
 `nano` wants to make sure you want to save what you typed as the file name you provided. If all looks good, hit `enter` and you are back in the command-line.
-
 
 Let's create a new directory:
 
@@ -344,20 +336,18 @@ In our current directory, you should have:
 
 ```bash
 $ ls
+example_sequence.fasta nucleotide_sequences.fasta testings/
 ```
-	example_sequence.fasta nucleotide_sequences.fasta testings/
-
 
 + The command to rename a file and to move a file around is the same. `mv` stands for move, but you also use it to rename files. 
 
 To rename a file:
 
 ```bash
-$ example_sequence.fasta original_nucleotide_sequences.fasta
+$ mv example_sequence.fasta original_nucleotide_sequences.fasta
 $ ls
+nucleotide_sequences.fasta original_nucleotide_sequences.fasta testings/
 ```
-
-	nucleotide_sequences.fasta original_nucleotide_sequences.fasta testings/
 
 Create a new directory named `original`:
 
@@ -369,6 +359,7 @@ To move `original_nucleotide_sequences.fasta` into `original/`:
 
 ```bash
 $ mv original_nucleotide_sequences.fasta original/
+```
 
 {{% notice note %}}
 To move a file:  
@@ -390,10 +381,10 @@ $ rm nucleotide_sequences.fasta
 
 ```bash
 $ ls
+nucleotide_sequences.fasta original/ testings/ 
 ```
 
 Yup... it's gone!
-
 
 
 ## **How's that for your first exposure to Cowboy? Any questions?**
