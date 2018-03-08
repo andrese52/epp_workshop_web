@@ -69,10 +69,11 @@ Bash keeps history of your commands. Hit the up-arrow key to scroll through.
 ### Basic commands
 
 + Who are you? `whoami` prints your username.  
+
 ```bash
 $ whoaim
 ```
-		nathalia
+	nathalia
 
 + Where am I? `pwd` stands for print current working directory. It prints your current *location*, aka `path`.
 
@@ -137,13 +138,14 @@ $ man ls
 
         --block-size=SIZE
               use SIZE-byte blocks.  See SIZE format below
-
+	   
 	-B, --ignore-backups
               do not list implied entries ending with ~
 
         -c     with -lt: sort by, and show, ctime (time of last modification of file status information) with -l: show
               ctime and sort by name otherwise: sort by ctime
-        (...)
+        
+	(...)
 
 
 Hit `q` to exit and return to the command-line.
@@ -227,10 +229,11 @@ $ cd workshop_mar17
 
 Let's create a fasta file named `example_sequence.fasta`:
 
-{{% notice notice %}}
+{{% notice note %}}
 Notice the extension of the file: `.fasta`. Fasta file is just a text file that contains nucleotide or amino acid sequences. We could name this file `example_sequence.txt` that it would be the same. The computer doesn't know `.fasta` extension, it *thinks* this is just a regular text file. Fasta file and many other file extensions used in bioinformatics were created by humans to humans.  
 Tell me what are the two most important components of a `.fasta` file?
 {{% /notice %}}
+
 
 ```bash
 $ nano example_sequence.fasta
@@ -248,9 +251,9 @@ $ nano example_sequence.fasta
 
 
 
-                                             [ New File ]
-         ^G Get Help    ^O WriteOut    ^R Read File     ^Y Prev Page     ^K Cut Text        ^C Cur Pos
-         ^X Exit        ^J Justify     ^W Where Is      ^V Next Page     ^U UnCut Text      ^T To Spell
+                                           [ New File ]
+         ^G Get Help  ^O WriteOut  ^R Read File  ^Y Prev Page   ^K Cut Text    ^C Cur Pos
+         ^X Exit      ^J Justify   ^W Where Is   ^V Next Page   ^U UnCut Text  ^T To Spell
 
 
 
@@ -258,27 +261,42 @@ When you hit `enter`, the text editor appears on your screen. Notice the file na
 
 Let's create hypothetical nucleotide sequences.
 
-```bash
->hypothetical_nucleotide_1
-ATCTGATCGATCGATCGATATCTTTTTTAGCTAGG
->hypothetical_nucleotide_2
-ACTAGCTAGCTATTACGGGGGGCTAGCTAGCTAGCGGGATCGATTTA
->hypothetical_nucleotide_3
-ATCGATCGATCGAAAAAATCGATTTTCGATCGATCGATCGA
-```
+
+          GNU nano 2.0.6                              File: example_sequence.fasta
+
+	  >hypothetical_nucleotide_1
+	  ATCTGATCGATCGATCGATATCTTTTTTAGCTAGG
+	  >hypothetical_nucleotide_2
+	  ACTAGCTAGCTATTACGGGGGGCTAGCTAGCTAGCGGGATCGATTTA
+	  >hypothetical_nucleotide_3
+	  ATCGATCGATCGAAAAAATCGATTTTCGATCGATCGATCGA
+
+
+                                           [ New File ]
+         ^G Get Help  ^O WriteOut  ^R Read File  ^Y Prev Page   ^K Cut Text    ^C Cur Pos
+         ^X Exit      ^J Justify   ^W Where Is   ^V Next Page   ^U UnCut Text  ^T To Spell
+
+
 
 I just finish typing the last nucleotide sequence... I don't really like these file names anymore, I wanna change them.*
 
 Use your arrow-keys to change the name of the files:
 
-```bash
->nucleotide_sequence_1
-ATCTGATCGATCGATCGATATCTTTTTTAGCTAGG
->nucleotide_sequence_2
-ACTAGCTAGCTATTACGGGGGGCTAGCTAGCTAGCGGGATCGATTTA
->nucleotide_sequence_3
-ATCGATCGATCGAAAAAATCGATTTTCGATCGATCGATCGA
-```
+          GNU nano 2.0.6                              File: example_sequence.fasta
+
+	  >nucleotide_sequence_1
+	  ATCTGATCGATCGATCGATATCTTTTTTAGCTAGG
+	  >nucleotide_sequence_2
+	  ACTAGCTAGCTATTACGGGGGGCTAGCTAGCTAGCGGGATCGATTTA
+	  >nucleotide_sequence_3
+	  ATCGATCGATCGAAAAAATCGATTTTCGATCGATCGATCGA
+
+
+                                           [ New File ]
+         ^G Get Help  ^O WriteOut  ^R Read File  ^Y Prev Page   ^K Cut Text    ^C Cur Pos
+         ^X Exit      ^J Justify   ^W Where Is   ^V Next Page   ^U UnCut Text  ^T To Spell
+
+
 
 Great! Looks much better.
 
@@ -295,21 +313,79 @@ Because we just created this file (made changes to it), `nano` is asking if we w
 Another new message appears:
 
     	 File Name to Write: example_sequence.fasta                                                                                                   
-	 ^G Get Help                        ^T To Files                        M-M Mac Format                     M-P Prepend
-	 ^C Cancel                          M-D DOS Format                     M-A Append                         M-B Backup File
+	 ^G Get Help   ^T To Files      M-M Mac Format   M-P Prepend
+	 ^C Cancel     M-D DOS Format   M-A Append       M-B Backup File
 
 
 `nano` wants to make sure you want to save what you typed as the file name you provided. If all looks good, hit `enter` and you are back in the command-line.
 
+
+Let's create a new directory:
+
+```bash
+$ mkdir testings
+```
+
++ To create a copy of the fasta file, use `cp`, which stands for copy. 
+
+If you want to create a duplicate of the file in the same directory you must provide a new name for the duplicate:
+
+```bash
+$ cp example_sequence.fasta nucleotide_sequences.fasta
+```
+
+If you want to creat a copy of the file in `testings/` you must provide the `path` to the directory (don't provide a new name):
+
+```bash
+$ cp example_sequence.fasta testings/
+```
+
+In our current directory, you should have:
+
+```bash
+$ ls
+```
+	example_sequence.fasta nucleotide_sequences.fasta testings/
+
+
++ The command to rename a file and to move a file around is the same. `mv` stands for move, but you also use it to rename files. 
+
+To rename a file:
+
+```bash
+$ example_sequence.fasta original_nucleotide_sequences.fasta
+$ ls
+```
+
+	nucleotide_sequences.fasta original_nucleotide_sequences.fasta testings/
+
+Create a new directory named `original`:
+
+```bash
+$ mkdir original
+```
+
+To move `original_nucleotide_sequences.fasta` into `original/`:
+
+```bash
+$ mv original_nucleotide_sequences.fasta original/
+
+{{% notice note %}}
+To move a file:  
+```bash $ mv *file_name_A directory_name_B/* ```   
+To rename a file:   
+```bash $ mv *file_name_A file_name_B* ```   
+{{% /notice %}}
+
 + To delete a file you don't want anymore use `rm`, which stands for remove.
 
 {{% notice warning %}}
-A word of caution here: when you remove a file from the command-line, the file is removed forever and there is no way to recover it.
+A word of caution here: when you remove a file from the command-line, the file is removed forever and there is no way to recover it.  
 With `rm` **THERE IS NO GOING BACK!** 
 {{% /notice %}}
 
 ```bash
-$ rm example_sequence.fasta
+$ rm nucleotide_sequences.fasta
 ```
 
 ```bash
@@ -317,6 +393,7 @@ $ ls
 ```
 
 Yup... it's gone!
+
 
 
 ## **How's that for your first exposure to Cowboy? Any questions?**
