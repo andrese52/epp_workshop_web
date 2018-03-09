@@ -17,9 +17,9 @@ your_username_here $
 
 When you have your prompt, you *communicate* with the computer by typing a command and hitting `enter` to run it.
 
-In computer words, 'typing a command' is accepting input your keyboard (from you). This is called **standard input** (stdin).
+In computer words, 'typing a command' is accepting input from keyboard (from your keyboard... you!). This is called **standard input** (stdin).
 
-When you run a command, the computer prints the output of that command to the screen. This is called **standard output** (stdout).  
+When you run a command, the computer prints the output on the screen. This is called **standard output** (stdout).  
 
 
 ### Standard Input 
@@ -33,7 +33,7 @@ Wed Mar  7 09:39:26 CST 2018
 
 > Try running `cal` and `ls`. What's the output?
 
-The majority of the commands we'll use, e.g. `cat` and `less`, require some input. You can simply do this by redirecting stdin. To redirect stdin, you can use `<`. 
+The majority of the commands we'll use, e.g. `cat` and `less`, require some input. You can simply do this by redirecting stdin. To redirect stdin, you can use `<` 
 
 ```bash
 $ cat < mgrisea_mat1_aa.txt
@@ -50,16 +50,12 @@ MIASLSPDDIARLIPQETLTSLLRANDEKERLRELPVSPRAVAAASKNKKKVNGFMAFRSYYAGIFQDRPQKERSPFITL
 
 ### Standard output
 
-The results or output of these commands are printed on the screen (stdout).
+The output of these commands is printed on the screen (stdout).
 
 The stdout on the screen means that:   
 1. Output is not being stored anywhere in any form    
 2. The command is not altering the original data    
 
-{{% notice tip %}}
-Hit the `tab` for autocompletion of file names and paths.  
-Bash keeps history of your commands. Hit the up-arrow key to scroll through.
-{{% /notice %}}
 
 ### Basic commands
 
@@ -195,7 +191,7 @@ The figure below is a representation of a file system. Let's pause for 2 minutes
 
 >INSERT FILE SYSTEM FIGURE
 
-Your prompt (aka, where we currently are) is in `/home`. Now, try to answer these questions quickly without coding:  
+Your prompt is in `/home`. Now, try to answer these questions quickly without coding:  
      - What's the command to change directory to `aa_sequences/`?  
      - What's the command to change directory to `cowboy_scripts/`?  
      - What's the command to change directory to `annotation/`?  
@@ -204,15 +200,14 @@ Now, your prompt is in `/annotation`. Try to answer these questions quickly with
      - What do you see inside this directory?  
      - What's the command to change directory to `workshop_mar17/`?  
 
+{{% notice tip %}}
+`.` (dot) represents the current directory.  
+`..` (two dots, no spaces) represents the parent directory.  
+Hit the `tab` for autocompletion of file names and paths.  
+Bash keeps history of your commands. Hit the up-arrow key to scroll through.
+{{% /notice %}}
 
-Use these `cd` shortcuts:  
-`./` (dot) represents the current directory.  
-`../` (two dots, no spaces) represents the parent directory.  
-
-
-Going back to where we were... `/home`
-
-Let's go back inside `workshop_mar17/`. 
+Going back to where we were... Let's go back inside `workshop_mar17/`. 
 
 ```bash
 $ cd workshop_mar17
@@ -223,8 +218,7 @@ $ cd workshop_mar17
 Let's create a fasta file named `example_sequence.fasta`:
 
 {{% notice note %}}
-Notice the extension of the file: `.fasta`. Fasta file is just a text file that contains nucleotide or amino acid sequences. We could name this file `example_sequence.txt` that it would be the same. The computer doesn't know `.fasta` extension, it *thinks* this is just a regular text file. Fasta file and many other file extensions used in bioinformatics were created by humans to humans.  
-Tell me what are the two most important components of a `.fasta` file?
+Notice the extension of the file: `.fasta`. What does that mean to the computer?  
 {{% /notice %}}
 
 
@@ -271,9 +265,9 @@ Let's create hypothetical nucleotide sequences.
 
 
 
-I just finish typing the last nucleotide sequence... I don't really like these file names anymore, I wanna change them.*
+I just finish typing the last nucleotide sequence, and... I don't really like these headers anymore. Let's change them.
 
-Use your arrow-keys to change the name of the files:
+Use your arrow-keys to move up to rename headers.
 
           GNU nano 2.0.6                              File: example_sequence.fasta
 
@@ -330,6 +324,8 @@ If you want to creat a copy of the file in `testings/` you must provide the `pat
 
 ```bash
 $ cp example_sequence.fasta testings/
+$ ls testings/
+example_sequence.fasta
 ```
 
 In our current directory, you should have:
@@ -363,12 +359,12 @@ $ mv original_nucleotide_sequences.fasta original/
 
 {{% notice note %}}
 To move a file:  
-```bash $ mv *file_name_A directory_name_B/* ```   
+``` $ mv file_name_A directory_name_B/ ```   
 To rename a file:   
-```bash $ mv *file_name_A file_name_B* ```   
+``` $ mv file_name_A file_name_B ```   
 {{% /notice %}}
 
-+ To delete a file you don't want anymore use `rm`, which stands for remove.
++ To delete a file, use `rm` that stands for remove.
 
 {{% notice warning %}}
 A word of caution here: when you remove a file from the command-line, the file is removed forever and there is no way to recover it.  
@@ -381,8 +377,22 @@ $ rm nucleotide_sequences.fasta
 
 ```bash
 $ ls
-nucleotide_sequences.fasta original/ testings/ 
+original/ testings/ 
 ```
+
++ To delete a directory, use `rm -r`.
+
+{{% notice warning %}}
+**THERE IS NO GOING BACK!**
+{{% /notice %}}
+
+```bash
+$ rm -r testings/
+$ ls
+original/
+```
+
+If a directory is empty, you can use `rmdir`. If a directory isn't empty, use `rm -r`. 
 
 Yup... it's gone!
 
