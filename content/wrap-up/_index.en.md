@@ -11,9 +11,11 @@ weight: 15
 ## Add this website to your bookmarks
 
 
-## Request help with your code
 
-Natty e-mail
+## Contact us at our emails: 
+Did you get stuck in one of your commands while practicing with this website? 
+#### <i class='fa fa-envelope'></i>  [Natty's e-mail](mailto:grafgra@okstate.edu)
 
-Andres e-mail
+#### <i class='fa fa-envelope'></i>  [Andre's e-mail] (mailto:andres.espindolac@gmail.com) 
+
 
