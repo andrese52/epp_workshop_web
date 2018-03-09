@@ -16,7 +16,7 @@ $ mkdir morning_session
 $ cd morning_session
 ```
 
-I believe you have worked with (or heard, at least) of a fasta file. Fasta files might have `.fasta` or `.fa` extensions. These are basically text files that contain nucleotide or protein sequences. A fasta file can contain gene sequences, or even an entire genome. 
+I believe you have worked with (or heard of) a fasta file. Fasta files might have `.fasta` or `.fa` extensions. These are basically text files that contain nucleotide or protein sequences. A fasta file can contain gene sequences, or even an entire genome. 
 
 Let's download an *Aspergillus* genome that is available on the web. This is the website to the genome:
 
@@ -55,6 +55,8 @@ When you download or receive a file from a collaborator, you must firstly invest
 ```bash
 $ less A_nidulans_FGSC_A4_current_chromosomes.fasta
 ```
+
+Hit `Q` to exit and return to the command-line.
 
 + `head` prints the first lines of a file. By default, it prints the first 10 lines.
 
@@ -107,7 +109,7 @@ $ grep 'Chr' A_nidulans_FGSC_A4_current_chromosomes.fasta
 >ChrV_A_nidulans_FGSC_A4 (3403833 nucleotides)
 ```
 
-But, is that all the sequences in this file? We can answer that by searching for a mandatory component of a fasta file, the `>`.
+But, is that all the sequences in this file? We can answer this question by searching for a mandatory component of a fasta file, the `>`.
 
 ```bash
 $ grep '>' A_nidulans_FGSC_A4_current_chromosomes.fasta
@@ -122,11 +124,12 @@ $ grep '>' A_nidulans_FGSC_A4_current_chromosomes.fasta
 >mito_A_nidulans_FGSC_A4 (33227 nucleotides)
 ```
 
-`grep` prints the lines in which the pattern is found. Use `grep -c` to count findings instead.
+`grep` prints the lines in which the pattern is found. Use `grep -c` to count pattern matches.
 
 ```bash
 $ grep -c 'Chr' A_nidulans_FGSC_A4_current_chromosomes.fasta 
 8
+
 $ grep -c '>' A_nidulans_FGSC_A4_current_chromosomes.fasta
 9
 ```
@@ -134,18 +137,12 @@ $ grep -c '>' A_nidulans_FGSC_A4_current_chromosomes.fasta
 Remember that the output of these programs get printed on the screen, aka **stdout**.  
 
 The stdout on the screen means that:  
-+ It is not being stored anywhere in any form	
-+ It is not altering the original data    
++It is not being stored anywhere in any form	
++It is not altering the original data    
 
 But, if we are interested in keeping this information, we can **REDIRECT** stdout to a text file to store information.  
 
-To redirect stdout we use `>`
-
-    FYI:
-        `<` input, can omit 
-        `>` output, must not omit!
-
-Let's say we are very interested in keeping the fasta headers of the A_nidulans genome.
+To redirect stdout we use `>`.
 
 ```bash
 $ grep 'Chr' A_nidulans_FGSC_A4_current_chromosomes.fasta > output_A_nidulans_fasta_headers.txt
@@ -210,9 +207,10 @@ Let's focus on columns 1, 4 and 5.
 + column 4 is gene feature
 + column 5 is chromosome
 
-Let's built a pipe to filter out these columns.
 
-We can start a pipe with `cat`, then use `cut` to slice the columns we want, and finish with `head -40`:
+Let's build a pipe to filter out these columns.
+
+We can start a pipe with `cat`, then use `cut` to slice the columns we want, and finish with `head -20`:
 
 ```bash
 $ cat A_nidulans_FGSC_A4_current_chromosomal_feature.tab | cut -f 1,4,5 | head -20
@@ -238,7 +236,7 @@ AN0014	ORF|Uncharacterized	ChrVIII_A_nidulans_FGSC_A4
 AN0015	ORF|Uncharacterized	ChrVIII_A_nidulans_FGSC_A4
 ```
 
-There is more to inspect about this file. Let's redirect output and work with a less cluttered file.
+There is more to inspect about this file. Redirect output and work with a less cluttered file.
 
 ```bash
 $ cat A_nidulans_FGSC_A4_current_chromosomal_feature.tab | cut -f 1,4,5 > output_A_nidulans_filtered_features.txt
@@ -271,21 +269,24 @@ uORF|Uncharacterized
 uORF|Verified
 ```
 
+`sed 1,8d` deletes the first eight lines.
+
 `sort` and `uniq` must be used together and in this order to get unique features.
 
-Repeat the pipe and redirect output. Remember to use your up-arrow key!
+Repeat the pipe and redirect output.
 
 ```bash
 $ cat output_A_nidulans_filtered_features.txt | sed '1,8d' output_A_nidulans_filtered_features.txt | cut -f 2 | sort | uniq > output_A_nidulans_filtered_annotations.txt
 ```
 
-### Challenge
+### Challenge!!
 
 1. How many times `ORF|Uncharacterized` appears on the 2nd column?
-2. How many times `pseudogene` appears appears on the 2nd column?
+2. How many times `pseudogene` appears on the 2nd column?
 3. Does the 1st column list each gene name (those named 'AN###') only once?
 4. Which word appears 199 times on the 2nd column?
 
+### Dip your toes on some advanced stuff...
 
 + Wildcard  
 
@@ -314,7 +315,7 @@ A loop is an iteration statement that will be repeatedly executed.
 
 This is a basic for loop syntax:
 
-``bash
+```bash  
 $ for VARIABLE in SOMEWHERE;  
  do command1;   
  command2;  
@@ -352,7 +353,7 @@ A_nidulans_FGSC_A4_current_chromosomes.fasta
 A_nidulans_FGSC_A4_current_chromosomes.fasta.gz
 ```
 
-`$` reflect the given variable. If you omit `$`:
+`$` reflect to the given variable. If you omit `$`:
 
 ```bash
 $ for file in A_nidulans*; do echo file; done
@@ -398,7 +399,7 @@ Download *A. flavus* genome:
 http://www.aspergillusgenome.org/download/sequence/A_flavus_NRRL_3357/current/A_flavus_NRRL_3357_chromosomes.fasta.gz
 ```
 
-Then, create a for loop that will execute the following on both *Asperillus* genomes:  
+Then, ultimately I want you to create a for loop that will execute the following on both *Asperillus* genomes:  
 1. Print the file name.
 2. Print the number of fasta sequences followed by the word 'sequences'.
 3. Print all the fasta headers.
@@ -407,7 +408,7 @@ My heart is soft... soft like room-temperature butter... Here goes the answer:
 
 ```
 A_flavus_NRRL_3357_chromosomes.fasta
-126 contigs
+126 sequences
 
 >1041045516887_A_flavus_NRRL_3357 (3491 nucleotides)
 >1041045516889_A_flavus_NRRL_3357 (4170 nucleotides)
@@ -416,7 +417,7 @@ A_flavus_NRRL_3357_chromosomes.fasta
 (...)
 
 A_nidulans_FGSC_A4_current_chromosomes.fasta
-9 contigs
+9 sequences
 
 >ChrIII_A_nidulans_FGSC_A4 (3470897 nucleotides)
 >ChrII_A_nidulans_FGSC_A4 (4070060 nucleotides)
