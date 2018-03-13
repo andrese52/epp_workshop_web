@@ -7,7 +7,7 @@ disableToc: true
 
 Thanks to them <i class="fa fa-heart"></i> for taking the time to teach bioinformatics.
 
-{{% ghcontributors "https://api.github.com/repos/andrese52/epp_workshop_web/stats/contributors?per_page=100" %}}
+{{% ghcontributors "https://api.github.com/repos/andrese52/epp_workshop_web/stats/contributors" %}}
 
 
 

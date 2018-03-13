@@ -16,10 +16,11 @@ padding-left: 4px ;
 .ghContributors > div span{
 font-size: x-small;
 padding-left: 4px ;
+font-weight: bold;
 }
 
 #codelines{
-font-size: small;
+font-size: x-small;
 padding-left: 4px ;
 color: green;
 }
@@ -37,7 +38,7 @@ color: green;
 		{{$week_num := len .weeks}}
 		{{$last_week := sub $week_num 1}}
 	
-		<span class="contributions">{{$week_num}} weeks</span><br><br>
+		<!-- <span class="contributions">{{$week_num}} weeks</span><br><br> -->
 		<span id="codelines" class="contributions">++{{(index .weeks $last_week).a}} lines this week</span>
   </div>
   {{ end }}
