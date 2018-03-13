@@ -8,9 +8,8 @@ pre: "<b>3.2 </b>"
 
 ## Contents
 
-- [Sources](#sources)
-- [Basic awk & sed](#basic-awk--sed)
-- [awk & sed for bioinformatics](#awk--sed-for-bioinformatics)
+- [Basic awk](#basic-awk-sed)
+- [Basic sed](#awk--sed-for-bioinformatics)
 - [sort, uniq, cut, etc.](#sort-uniq-cut-etc)
 - [GFF3 Annotations](#gff3-annotations)
 - [Other generally useful aliases for your .bashrc](#other-generally-useful-aliases-for-your-bashrc)

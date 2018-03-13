@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://bioinformatics.netlify.com/start/</loc>
+    <lastmod>2018-03-03T16:33:35-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bioinformatics.netlify.com/morning/links/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bioinformatics.netlify.com/afternoon/terminology/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bioinformatics.netlify.com/morning/cowboy/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bioinformatics.netlify.com/morning/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bioinformatics.netlify.com/afternoon/regex/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bioinformatics.netlify.com/afternoon/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bioinformatics.netlify.com/afternoon/data_acquisition/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bioinformatics.netlify.com/morning/basic_unix/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bioinformatics.netlify.com/afternoon/my_first_script/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bioinformatics.netlify.com/morning/unix_essentials/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bioinformatics.netlify.com/</loc>
+    <lastmod>2018-03-03T16:33:35-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bioinformatics.netlify.com/afternoon/sources/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bioinformatics.netlify.com/wrap-up/</loc>
+    <lastmod>2016-04-09T16:50:16+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bioinformatics.netlify.com/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://bioinformatics.netlify.com/credits/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bioinformatics.netlify.com/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

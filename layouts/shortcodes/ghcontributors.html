@@ -29,7 +29,7 @@ color: green;
   {{ $url := .Get 0 }}
   {{ range getJSON $url}}
   <div>
-    <img src="{{.author.avatar_url}}" class="inline" width="32" height="32" style="height: 32px;height: 32px;margin-bottom:.25em; vertical-align:middle; ">
+    <img src="{{.author.avatar_url}}" class="inline" width="64" height="64" style="height: 64px;height: 64px;margin-bottom:.25em; vertical-align:middle; ">
     <label><a href="{{.author.html_url}}">@{{.author.login}}</a></label>
 	
 		<span class="contributions">{{.total}} commits</span>
