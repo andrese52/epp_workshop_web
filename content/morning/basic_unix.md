@@ -189,7 +189,7 @@ With `cd` we can move across different levels of directory hierarchy if you inpu
 
 The figure below is a representation of a file system. Let's pause for 2 minutes to check this out.
 
->INSERT FILE SYSTEM FIGURE
+{{< figure src="/images/filesystem.png" title="File system organization" >}}
 
 Your prompt is in `/home`. Now, try to answer these questions quickly without coding:  
      - What's the command to change directory to `aa_sequences/`?  
