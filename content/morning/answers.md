@@ -10,24 +10,24 @@ pre: "<b>2.5 </b>"
 Here you'll find the answers to the challenges in [2.4 Unix essentials](./unix_essentials)
 
 
-+ Pipes:
++ **Pipes:**
 
 
-1. How many times `ORF|Uncharacterized` appears on the 2nd column?
+**How many times `ORF|Uncharacterized` appears on the 2nd column?**
 
 ```bash
 $ cat output_A_nidulans_filtered_features.txt | sed '1,8d' | cut -f 2 | grep -c 'ORF|Uncharacterized'
 9312
 ```
 
-2. How many times `pseudogene` appears on the 2nd column?
+**How many times `pseudogene` appears on the 2nd column?**
 
 ```bash
 $ cat output_A_nidulans_filtered_features.txt | sed '1,8d' | cut -f 2 | grep -c 'pseudogene'
 58
 ```
 
-3. Does the 1st column list each gene name (those named 'AN###') only once?
+**Does the 1st column list each gene name (those named 'AN###') only once?**
 
 ```bash
 $ cat A_nidulans_FGSC_A4_current_chromosomal_feature.tab | sed '1,8d' | cut -f 1 | grep 'AN' -c
@@ -36,11 +36,11 @@ $ cat A_nidulans_FGSC_A4_current_chromosomal_feature.tab | sed '1,8d' | cut -f -
 10779
 ```
 
->Why a single and straight 'wc -l ' won't work? 
+>Why a single and straight 'wc -l ' won't work?   
 >Did you tail? There are genes that do not start with 'AN'.
 
 
-4. Which word appears 199 times on the 2nd column?
+**Which word appears 199 times on the 2nd column?**
 
 ```bash
 $ cat output_A_nidulans_filtered_features.txt | sed '1,8d' | cut -f 2 | sort | uniq -c
@@ -63,22 +63,23 @@ $ cat output_A_nidulans_filtered_features.txt | sed '1,8d' | cut -f 2 | sort | u
    4 uORF|Verified
 ```
 
->tRNA|Uncharacterized
+It's tRNA|Uncharacterized.
 
 
 
-+ For loop:
++ **For loop**:
 
 
-
-Download *A. flavus* genome. 
+Download *A. flavus* genome, *and unzip it*.
 
 ```bash
 $ curl -O http://www.aspergillusgenome.org/download/sequence/A_flavus_NRRL_3357/current/A_flavus_NRRL_3357_chromosomes.fasta.gz
+
 A_flavus_NRRL_3357_chromosomes.fasta.gz
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
 100 10.9M  100 10.9M    0     0  6618k      0  0:00:01  0:00:01 --:--:-- 6616k
+
 $ gunzip A_flavus_NRRL_3357_chromosomes.fasta.gz
 $ ls *flavus*
 A_flavus_NRRL_3357_chromosomes.fasta
