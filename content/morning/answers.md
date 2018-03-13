@@ -13,21 +13,21 @@ Here you'll find the answers to the challenges in [2.4 Unix essentials](./unix_e
 + **Pipes:**
 
 
-**How many times `ORF|Uncharacterized` appears on the 2nd column?**
+How many times `ORF|Uncharacterized` appears on the 2nd column?
 
 ```bash
 $ cat output_A_nidulans_filtered_features.txt | sed '1,8d' | cut -f 2 | grep -c 'ORF|Uncharacterized'
 9312
 ```
 
-**How many times `pseudogene` appears on the 2nd column?**
+How many times `pseudogene` appears on the 2nd column?
 
 ```bash
 $ cat output_A_nidulans_filtered_features.txt | sed '1,8d' | cut -f 2 | grep -c 'pseudogene'
 58
 ```
 
-**Does the 1st column list each gene name (those named 'AN###') only once?**
+Does the 1st column list each gene name (those named 'AN###') only once?
 
 ```bash
 $ cat A_nidulans_FGSC_A4_current_chromosomal_feature.tab | sed '1,8d' | cut -f 1 | grep 'AN' -c
@@ -40,7 +40,7 @@ $ cat A_nidulans_FGSC_A4_current_chromosomal_feature.tab | sed '1,8d' | cut -f -
 >Did you tail? There are genes that do not start with 'AN'.
 
 
-**Which word appears 199 times on the 2nd column?**
+Which word appears 199 times on the 2nd column?
 
 ```bash
 $ cat output_A_nidulans_filtered_features.txt | sed '1,8d' | cut -f 2 | sort | uniq -c
