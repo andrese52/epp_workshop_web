@@ -74,12 +74,13 @@ Download *A. flavus* genome, *and unzip it*.
 
 ```bash
 $ curl -O http://www.aspergillusgenome.org/download/sequence/A_flavus_NRRL_3357/current/A_flavus_NRRL_3357_chromosomes.fasta.gz
-
 A_flavus_NRRL_3357_chromosomes.fasta.gz
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
 100 10.9M  100 10.9M    0     0  6618k      0  0:00:01  0:00:01 --:--:-- 6616k
+```
 
+```bash
 $ gunzip A_flavus_NRRL_3357_chromosomes.fasta.gz
 $ ls *flavus*
 A_flavus_NRRL_3357_chromosomes.fasta
