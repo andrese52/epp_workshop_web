@@ -1,8 +1,8 @@
 ---
 title: My first bash script
-weight: 3
+weight: 4
 chapter: false
-pre: "<b>3.3 </b>"
+pre: "<b>3.4 </b>"
 ---
 ### Building our first script
 The native language of Linux for its terminal is `bash` and we can write 

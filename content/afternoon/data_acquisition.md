@@ -1,8 +1,8 @@
 ---
 title: Data Acquisition
-weight: 2
+weight: 3
 chapter: false
-pre: "<b>3.2 </b>"
+pre: "<b>3.3 </b>"
 ---
 {{% notice note %}} While using coding and bioinformatics, we want to 
 avoid using graphical user interphases (GUIs) as much as we can. Can 

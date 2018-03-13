@@ -1,0 +1,44 @@
+<style type="text/css">
+.ghContributors{
+display:flex;
+flex-flow:  wrap;
+align-content: flex-start
+}
+
+.ghContributors > div{
+width: 50% ;
+display: inline-flex;
+margin-bottom: 5px;
+}
+.ghContributors > div label{
+padding-left: 4px ;
+}
+.ghContributors > div span{
+font-size: x-small;
+padding-left: 4px ;
+}
+
+#codelines{
+font-size: small;
+padding-left: 4px ;
+color: green;
+}
+
+</style>
+<div class="ghContributors">
+  {{ $url := .Get 0 }}
+  {{ range getJSON $url}}
+  <div>
+    <img src="{{.author.avatar_url}}" class="inline" width="32" height="32" style="height: 32px;height: 32px;margin-bottom:.25em; vertical-align:middle; ">
+    <label><a href="{{.author.html_url}}">@{{.author.login}}</a></label>
+	
+		<span class="contributions">{{.total}} commits</span>
+	
+		{{$week_num := len .weeks}}
+		{{$last_week := sub $week_num 1}}
+	
+		<span class="contributions">{{$week_num}} weeks</span><br><br>
+		<span id="codelines" class="contributions">++{{(index .weeks $last_week).a}} lines this week</span>
+  </div>
+  {{ end }}
+</div>
