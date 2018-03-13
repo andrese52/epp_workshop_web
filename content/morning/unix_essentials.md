@@ -382,6 +382,8 @@ and
 me
 ```
 
+Now, the English translation:
+
 ```bash
 $ for i in {1..5}; do echo "Hello $i times"; done
 Hello 1 times
@@ -389,11 +391,6 @@ Hello 2 times
 Hello 3 times
 Hello 4 times
 Hello 5 times
-```
-
-Now, the English translation:
-
-```bash
 $ for i in {1..5}; do echo "It's gonna print i $i times"; done
 It's gonna print i 1 times
 It's gonna print i 2 times
