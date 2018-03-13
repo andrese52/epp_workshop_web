@@ -286,9 +286,9 @@ $ cat output_A_nidulans_filtered_features.txt | sed '1,8d' output_A_nidulans_fil
 3. Does the 1st column list each gene name (those named 'AN###') only once?
 4. Which word appears 199 times on the 2nd column?
 
-### Dip your toes on some advanced stuff...
+### Dip your toes into some advanced stuff...
 
-+ Wildcard  
++ **Wildcard**  
 
 The wildcard `*` is going to match that a pattern before running a command.  
 
@@ -306,10 +306,9 @@ $ ls *FGSC_A4*
 A_nidulans_FGSC_A4_current_chromosomal_feature.tab
 A_nidulans_FGSC_A4_current_chromosomes.fasta
 A_nidulans_FGSC_A4_current_chromosomes.fasta.gz
-
 ```
 
-+ For loop  
++ **For loop**  
 
 A loop is an iteration statement that will be repeatedly executed. 
 
@@ -317,10 +316,10 @@ This is a basic for loop syntax:
 
 ```bash  
 $ for VARIABLE in SOMEWHERE;  
- do command1;   
- command2;  
- commandN;  
-done   
+> do command1;   
+> command2;  
+> commandN;  
+> done   
 ```
 
 or,
@@ -332,8 +331,56 @@ $ for VARIABLE in SOMEWHERE; do command1; command2; commandN; done
 `VARIABLE` is an arbitrary name that you choose.   
 `SOMEWHERE` can be a file or a directory. 
 
+**IMPORTANT:** What is a 'VARIABLE'?  
+A variable is simply a *box*, which you create, to *place* values into it. A more technical definition is: a character string that you assign a value. The value could be text, number, filename, path, etc. You can assing more than one type of value to a variable.  
+
+Don't use `!`, `*` or `-` in variable names because these characters have special meaning for unix...  
+
+You call a variable you defined by using `$` in front of the variable name.  
+
+This is how you define a variable:
+
+```bash
+$ variable_name=variable_value
+```
+
+```bash
+$ words="one two three"
+$ echo $words
+one two three
+$ words="flower sun moon and me"
+$ echo $words
+flower sun moon and me
+```
+
+The syntax of a `for loop` in plain English:  
+
+```bash
+$ for variable in collection; do things with variable; done
+```
 
 What does a for loop do?
+
+```bash
+$ for character in $words; do echo $character; done
+flower
+sun
+moon
+and
+me
+$ for char in $words; do echo $char; done
+flower
+sun
+moon
+and
+me
+$ for bananas in $words; do echo $bananas; done
+flower
+sun
+moon
+and
+me
+```
 
 ```bash
 $ for i in {1..5}; do echo "Hello $i times"; done
@@ -342,6 +389,17 @@ Hello 2 times
 Hello 3 times
 Hello 4 times
 Hello 5 times
+```
+
+Now, the English translation:
+
+```bash
+$ for i in {1..5}; do echo "It's gonna print i $i times"; done
+It's gonna print i 1 times
+It's gonna print i 2 times
+It's gonna print i 3 times
+It's gonna print i 4 times
+It's gonna print i 5 times
 ```
 
 Let's execute commands in files that begin with `A_nidulans*`.
@@ -353,7 +411,7 @@ A_nidulans_FGSC_A4_current_chromosomes.fasta
 A_nidulans_FGSC_A4_current_chromosomes.fasta.gz
 ```
 
-`$` reflect to the given variable. If you omit `$`:
+Remember that `$` reflect to the given variable. If you omit `$`:
 
 ```bash
 $ for file in A_nidulans*; do echo file; done
@@ -391,6 +449,8 @@ AN0005	ORF|Uncharacterized	ChrVIII_A_nidulans_FGSC_A4
 
 The more you practice on your own, and the more you struggle, the more you'll learn. So let's practice struggling! 
 
+### Challenge!!
+
 Now, you are on your own. Talk to your neighbor and ask your best friend *Google* whenever you have a burning question.
 
 Download *A. flavus* genome:
@@ -400,11 +460,11 @@ http://www.aspergillusgenome.org/download/sequence/A_flavus_NRRL_3357/current/A_
 ```
 
 Then, ultimately I want you to create a for loop that will execute the following on both *Asperillus* genomes:  
-1. Print the file name.
-2. Print the number of fasta sequences followed by the word 'sequences'.
-3. Print all the fasta headers.
+1. Print the file name.  
+2. Print the number of fasta sequences followed by the word 'sequences'.  
+3. Print all the fasta headers.  
 
-My heart is soft... soft like room-temperature butter... Here goes the answer:
+My heart is soft... soft like a fungal mycelia, or room-temperature butter... Here goes the answer:
 
 ```
 A_flavus_NRRL_3357_chromosomes.fasta
@@ -430,4 +490,4 @@ A_nidulans_FGSC_A4_current_chromosomes.fasta
 >mito_A_nidulans_FGSC_A4 (33227 nucleotides)
 ```
 
-Now, this is a piece of cake!
+This is how the answer looks like. Now, this is a piece of cake! I made it super easy for you!
