@@ -8,12 +8,10 @@ pre: "<b>3.2 </b>"
 
 ## Contents
 
-- [Basic awk](#basic-awk-sed)
+- [Basic awk](#basic-awk)
 - [Basic sed](#basic-sed)
 - [sort, uniq, cut, etc.](#sort-uniq-cut-etc)
 - [GFF3 Annotations](#gff3-annotations)
-- [Other generally useful aliases for your .bashrc](#other-generally-useful-aliases-for-your-bashrc)
-
 
 
 ## Basic awk
@@ -103,6 +101,12 @@ Calculate the sum of column 2 and 3 and put it at the end of a row:
 Calculate the mean length of reads in a fastq file:
 
     awk 'NR%4==2{sum+=length($0)}END{print sum/(NR/4)}' input.fastq	
+	
+And this is the best of the best. For the end: Changing the headers of multiple fasta files based on their naming prefix<sup>[ref.](https://www.biostars.org/p/237163/#237167)</sup>. I use this in a regular basis after I have done multiple modifications to fasta files. 
+
+```bash
+ ls *probes.fasta | cut -d "-" -f 1 | while read PREFIX; do awk -v P=${PREFIX} '/^>/{print ">" P "_" ++i; next}{print}' ${PREFIX}-probes.fasta > ${PREFIX}-probes-new.fasta ; done
+ ```
 
 ## Basic SED
 
@@ -147,27 +151,15 @@ Extract every 4th line starting at the second line (extract the sequence from FA
 
     sed -n '2~4p' file.fq
 	
-Remove spaces in fasta headers
+Remove spaces in fasta headers: this one-liner removes spaces and re-writes the file
 
-	sed 's, ,_,g' -i FASTA_file
+	sed 's, ,_,g' -i FILENAME.FASTA
+	
+Now, let's try by eliminating the `-i`
 
-## Pipes with AWK
-
-[[back to top](#contents)]
-
-Returns all lines on Chr 1 between 1MB and 2MB in file.txt. (assumes) chromosome in column 1 and position in column 3 (this same concept can be used to return only variants that above specific allele frequencies):
-
-    cat file.txt | awk '$1=="1"' | awk '$3>=1000000' | awk '$3<=2000000'
-
-
-Basic sequence statistics. Print total number of reads, total number unique reads, percentage of unique reads, most abundant sequence, its frequency, and percentage of total in file.fq:
-
-    cat myfile.fq | awk '((NR-2)%4==0){read=$1;total++;count[read]++}END{for(read in count){if(!max||count[read]>max) {max=count[read];maxRead=read};if(count[read]==1){unique++}};print total,unique,unique*100/total,maxRead,count[maxRead],count[maxRead]*100/total}'
-
-
-
-Convert a VCF file to a BED file
-sed -e 's/chr//' file.vcf | awk '{OFS="\t"; if (!/^#/){print $1,$2-1,$2,$4"/"$5,"+"}}'
+```bash
+sed 's, ,_,g' FILENAME.FASTA
+```
 
 
 ## sort, uniq, cut, etc.
@@ -215,15 +207,6 @@ Print all possible 3mer DNA sequence combinations:
 
     echo {A,C,T,G}{A,C,T,G}{A,C,T,G}
 
-
-Untangle an interleaved paired-end FASTQ file. If a FASTQ file has paired-end reads intermingled, and you want to separate them into separate /1 and /2 files, and assuming the /1 reads precede the /2 reads:
-
-    cat interleaved.fq |paste - - - - - - - - | tee >(cut -f 1-4 | tr "\t" "\n" > deinterleaved_1.fq) | cut -f 5-8 | tr "\t" "\n" > deinterleaved_2.fq
-
-Take a fasta file with a bunch of short scaffolds, e.g., labeled `>Scaffold12345`, remove them, and write a new fasta without them:
-
-    samtools faidx genome.fa && grep -v Scaffold genome.fa.fai | cut -f1 | xargs -n1 samtools faidx genome.fa > genome.noscaffolds.fa
-
 	
 ## GFF3 Annotations
 
@@ -250,11 +233,3 @@ Extract all gene IDs from a GFF3 file.
     grep $'\tgene\t' yourannots.gff3 | perl -ne '/ID=([^;]+)/ and printf("%s\n", $1)'
 
 
-Print length of each gene in a GFF3 file.
-
-    grep $'\tgene\t' yourannots.gff3 | cut -s -f 4,5 | perl -ne '@v = split(/\t/); printf("%d\n", $v[1] - $v[0] + 1)'
-
-
-FASTA header lines to GFF format (assuming the length is in the header as an appended "\_length" as in [Velvet](http://www.ebi.ac.uk/~zerbino/velvet/) assembled transcripts):
-
-    grep '>' file.fasta | awk -F "_" 'BEGIN{i=1; print "##gff-version 3"}{ print $0"\t BLAT\tEXON\t1\t"$10"\t95\t+\t.\tgene_id="$0";transcript_id=Transcript_"i;i++ }' > file.gff
