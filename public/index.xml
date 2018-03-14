@@ -58,7 +58,8 @@ Types of paths:
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://bioinformatics.netlify.com/afternoon/regex/</guid>
-      <description>Contents  Sources Basic awk &amp;amp; sed awk &amp;amp; sed for bioinformatics sort, uniq, cut, etc. GFF3 Annotations Other generally useful aliases for your .bashrc  Basic awk &amp;amp; sed [back to top]
+      <description>Contents  Basic awk Basic sed sort, uniq, cut, etc. GFF3 Annotations Other generally useful aliases for your .bashrc  Basic awk [back to top]
+Very helpful command to separate columns. Similar to excel.
 Extract fields 2, 4, and 5 from file.txt:
 awk &#39;{print $2,$4,$5}&#39; input.txt  Print each line where the 5th field is equal to ‘abc123’:
 awk &#39;$5 == &amp;quot;abc123&amp;quot;&#39; file.txt  Print each line where the 5th field is not equal to ‘abc123’:</description>
@@ -124,8 +125,7 @@ Let&amp;rsquo;s download an Aspergillus genome that is available on the web.</de
       
       <guid>https://bioinformatics.netlify.com/credits/</guid>
       <description>Contributors Thanks to them  for taking the time to teach bioinformatics.
-.ghContributors{ display:flex; flex-flow: wrap; align-content: flex-start } .ghContributors  div{ width: 50% ; display: inline-flex; margin-bottom: 5px; } .ghContributors  div label{ padding-left: 4px ; } .ghContributors  div span{ font-size: x-small; padding-left: 4px ; } #codelines{ font-size: small; padding-left: 4px ; color: green; }   @andrese52 14 commits 3 weeks
-++0 lines this week   @ngrafgr 25 commits 3 weeks</description>
+.ghContributors{ display:flex; flex-flow: wrap; align-content: flex-start } .ghContributors  div{ width: 50% ; display: inline-flex; margin-bottom: 5px; } .ghContributors  div label{ padding-left: 4px ; } .ghContributors  div span{ font-size: x-small; padding-left: 4px ; font-weight: bold; } #codelines{ font-size: x-small; padding-left: 4px ; color: green; }   @andrese52 19 commits ++27327 lines this week   @ngrafgr 25 commits ++0 lines this week   Packages and libraries  mermaid - generation of diagram and flowchart from text in a similar manner as markdown font awesome - the iconic font and CSS framework jQuery - The Write Less, Do More, JavaScript Library lunr - Lunr enables you to provide a great search experience without the need for external, server-side, search services&amp;hellip; horsey - Progressive and customizable autocomplete component clipboard.</description>
     </item>
     
   </channel>

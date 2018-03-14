@@ -12,19 +12,19 @@
     <title>Regular expressions :: Introduction to Programming for beginners</title>
     
     
-    <link href="/css/nucleus.css?1520917159" rel="stylesheet">
-    <link href="/css/font-awesome.min.css?1520917159" rel="stylesheet">
-    <link href="/css/hybrid.css?1520917159" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1520917159" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1520917159" rel="stylesheet">
-    <link href="/css/auto-complete.css?1520917159" rel="stylesheet">
-    <link href="/css/theme.css?1520917159" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1520917159" rel="stylesheet">
+    <link href="/css/nucleus.css?1520956824" rel="stylesheet">
+    <link href="/css/font-awesome.min.css?1520956824" rel="stylesheet">
+    <link href="/css/hybrid.css?1520956824" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1520956824" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1520956824" rel="stylesheet">
+    <link href="/css/auto-complete.css?1520956824" rel="stylesheet">
+    <link href="/css/theme.css?1520956824" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1520956824" rel="stylesheet">
     
-      <link href="/css/theme-mine.css?1520917159" rel="stylesheet">
+      <link href="/css/theme-mine.css?1520956824" rel="stylesheet">
     
 
-    <script src="/js/jquery-2.x.min.js?1520917159"></script>
+    <script src="/js/jquery-2.x.min.js?1520956824"></script>
     
     <style type="text/css">
       :root #header + #content > #left > #rlblock_left{ 
@@ -87,14 +87,14 @@ h1 {
     <span data-search-clear=""><i class="fa fa-close"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1520917159"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1520917159"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1520956824"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1520956824"></script>
 <script type="text/javascript">
     
         var baseurl = '\/';
     
 </script>
-<script type="text/javascript" src="/js/search.js?1520917159"></script>
+<script type="text/javascript" src="/js/search.js?1520956824"></script>
 
     
   </div>
@@ -505,8 +505,9 @@ h1 {
 <li>
 <ul>
 <li><a href="#contents">Contents</a></li>
-<li><a href="#basic-awk-sed">Basic awk &amp; sed</a></li>
-<li><a href="#awk-sed-for-bioinformatics">awk &amp; sed for bioinformatics</a></li>
+<li><a href="#basic-awk">Basic awk</a></li>
+<li><a href="#basic-sed">Basic SED</a></li>
+<li><a href="#pipes-with-awk">Pipes with AWK</a></li>
 <li><a href="#sort-uniq-cut-etc">sort, uniq, cut, etc.</a></li>
 <li><a href="#gff3-annotations">GFF3 Annotations</a></li>
 </ul></li>
@@ -534,17 +535,18 @@ h1 {
 <h2 id="contents">Contents</h2>
 
 <ul>
-<li><a href="#sources">Sources</a></li>
-<li><a href="#basic-awk--sed">Basic awk &amp; sed</a></li>
-<li><a href="#awk--sed-for-bioinformatics">awk &amp; sed for bioinformatics</a></li>
+<li><a href="#basic-awk-sed">Basic awk</a></li>
+<li><a href="#basic-sed">Basic sed</a></li>
 <li><a href="#sort-uniq-cut-etc">sort, uniq, cut, etc.</a></li>
 <li><a href="#gff3-annotations">GFF3 Annotations</a></li>
 <li><a href="#other-generally-useful-aliases-for-your-bashrc">Other generally useful aliases for your .bashrc</a></li>
 </ul>
 
-<h2 id="basic-awk-sed">Basic awk &amp; sed</h2>
+<h2 id="basic-awk">Basic awk</h2>
 
 <p>[<a href="#contents">back to top</a>]</p>
+
+<p>Very helpful command to separate columns. Similar to excel.</p>
 
 <p>Extract fields 2, 4, and 5 from file.txt:</p>
 
@@ -591,6 +593,50 @@ h1 {
 <pre><code>awk '{x+=$2}END{print x/NR}' file.txt
 </code></pre>
 
+<p>Keep only top bit scores in blast hits (best bit score only):</p>
+
+<pre><code>awk '{ if(!x[$1]++) {print $0; bitscore=($14-1)} else { if($14&gt;bitscore) print $0} }' blastout.txt
+</code></pre>
+
+<p>Keep only top bit scores in blast hits (5 less than the top):</p>
+
+<pre><code>awk '{ if(!x[$1]++) {print $0; bitscore=($14-6)} else { if($14&gt;bitscore) print $0} }' blastout.txt
+</code></pre>
+
+<p>Split a multi-FASTA file into individual FASTA files:</p>
+
+<pre><code>awk '/^&gt;/{s=++d&quot;.fa&quot;} {print &gt; s}' multi.fa
+</code></pre>
+
+<p>Output sequence name and its length for every sequence within a fasta file:</p>
+
+<pre><code>cat file.fa | awk '$0 ~ &quot;&gt;&quot; {print c; c=0;printf substr($0,2,100) &quot;\t&quot;; } $0 !~ &quot;&gt;&quot; {c+=length($0);} END { print c; }'
+</code></pre>
+
+<p>Print everything except the first line</p>
+
+<pre><code>awk 'NR&gt;1' input.txt
+</code></pre>
+
+<p>Print rows 20-80:</p>
+
+<pre><code>awk 'NR&gt;=20&amp;&amp;NR&lt;=80' input.txt
+</code></pre>
+
+<p>Calculate the sum of column 2 and 3 and put it at the end of a row:</p>
+
+<pre><code>awk '{print $0,$2+$3}' input.txt
+</code></pre>
+
+<p>Calculate the mean length of reads in a fastq file:</p>
+
+<pre><code>awk 'NR%4==2{sum+=length($0)}END{print sum/(NR/4)}' input.fastq 
+</code></pre>
+
+<h2 id="basic-sed">Basic SED</h2>
+
+<p>[<a href="#contents">back to top</a>]</p>
+
 <p>Replace all occurances of <code>foo</code> with <code>bar</code> in file.txt:</p>
 
 <pre><code>sed 's/foo/bar/g' file.txt
@@ -621,7 +667,17 @@ h1 {
 <pre><code>sed -n '/EndOfUsefulData/,$!p' file.txt
 </code></pre>
 
-<h2 id="awk-sed-for-bioinformatics">awk &amp; sed for bioinformatics</h2>
+<p>Convert a FASTQ file to FASTA:</p>
+
+<pre><code>sed -n '1~4s/^@/&gt;/p;2~4p' file.fq &gt; file.fa
+</code></pre>
+
+<p>Extract every 4th line starting at the second line (extract the sequence from FASTQ file):</p>
+
+<pre><code>sed -n '2~4p' file.fq
+</code></pre>
+
+<h2 id="pipes-with-awk">Pipes with AWK</h2>
 
 <p>[<a href="#contents">back to top</a>]</p>
 
@@ -633,61 +689,6 @@ h1 {
 <p>Basic sequence statistics. Print total number of reads, total number unique reads, percentage of unique reads, most abundant sequence, its frequency, and percentage of total in file.fq:</p>
 
 <pre><code>cat myfile.fq | awk '((NR-2)%4==0){read=$1;total++;count[read]++}END{for(read in count){if(!max||count[read]&gt;max) {max=count[read];maxRead=read};if(count[read]==1){unique++}};print total,unique,unique*100/total,maxRead,count[maxRead],count[maxRead]*100/total}'
-</code></pre>
-
-<p>Convert .bam back to .fastq:</p>
-
-<pre><code>samtools view file.bam | awk 'BEGIN {FS=&quot;\t&quot;} {print &quot;@&quot; $1 &quot;\n&quot; $10 &quot;\n+\n&quot; $11}' &gt; file.fq
-</code></pre>
-
-<p>Keep only top bit scores in blast hits (best bit score only):</p>
-
-<pre><code>awk '{ if(!x[$1]++) {print $0; bitscore=($14-1)} else { if($14&gt;bitscore) print $0} }' blastout.txt
-</code></pre>
-
-<p>Keep only top bit scores in blast hits (5 less than the top):</p>
-
-<pre><code>awk '{ if(!x[$1]++) {print $0; bitscore=($14-6)} else { if($14&gt;bitscore) print $0} }' blastout.txt
-</code></pre>
-
-<p>Split a multi-FASTA file into individual FASTA files:</p>
-
-<pre><code>awk '/^&gt;/{s=++d&quot;.fa&quot;} {print &gt; s}' multi.fa
-</code></pre>
-
-<p>Output sequence name and its length for every sequence within a fasta file:</p>
-
-<pre><code>cat file.fa | awk '$0 ~ &quot;&gt;&quot; {print c; c=0;printf substr($0,2,100) &quot;\t&quot;; } $0 !~ &quot;&gt;&quot; {c+=length($0);} END { print c; }'
-</code></pre>
-
-<p>Convert a FASTQ file to FASTA:</p>
-
-<pre><code>sed -n '1~4s/^@/&gt;/p;2~4p' file.fq &gt; file.fa
-</code></pre>
-
-<p>Extract every 4th line starting at the second line (extract the sequence from FASTQ file):</p>
-
-<pre><code>sed -n '2~4p' file.fq
-</code></pre>
-
-<p>Print everything except the first line</p>
-
-<pre><code>awk 'NR&gt;1' input.txt
-</code></pre>
-
-<p>Print rows 20-80:</p>
-
-<pre><code>awk 'NR&gt;=20&amp;&amp;NR&lt;=80' input.txt
-</code></pre>
-
-<p>Calculate the sum of column 2 and 3 and put it at the end of a row:</p>
-
-<pre><code>awk '{print $0,$2+$3}' input.txt
-</code></pre>
-
-<p>Calculate the mean length of reads in a fastq file:</p>
-
-<pre><code>awk 'NR%4==2{sum+=length($0)}END{print sum/(NR/4)}' input.fastq
 </code></pre>
 
 <p>Convert a VCF file to a BED file
@@ -1054,20 +1055,20 @@ comm -12 file1 file2
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1520917159"></script>
-    <script src="/js/perfect-scrollbar.min.js?1520917159"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1520917159"></script>
-    <script src="/js/jquery.sticky.js?1520917159"></script>
-    <script src="/js/featherlight.min.js?1520917159"></script>
-    <script src="/js/html5shiv-printshiv.min.js?1520917159"></script>
-    <script src="/js/highlight.pack.js?1520917159"></script>
+    <script src="/js/clipboard.min.js?1520956824"></script>
+    <script src="/js/perfect-scrollbar.min.js?1520956824"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1520956824"></script>
+    <script src="/js/jquery.sticky.js?1520956824"></script>
+    <script src="/js/featherlight.min.js?1520956824"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1520956824"></script>
+    <script src="/js/highlight.pack.js?1520956824"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom.71422.js?1520917159"></script>
-    <script src="/js/learn.js?1520917159"></script>
-    <script src="/js/hugo-learn.js?1520917159"></script>
+    <script src="/js/modernizr.custom.71422.js?1520956824"></script>
+    <script src="/js/learn.js?1520956824"></script>
+    <script src="/js/hugo-learn.js?1520956824"></script>
 
-    <link href="/mermaid/mermaid.css?1520917159" type="text/css" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1520917159"></script>
+    <link href="/mermaid/mermaid.css?1520956824" type="text/css" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1520956824"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
