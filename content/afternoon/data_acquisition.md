@@ -165,24 +165,71 @@ $ grep -i "aspergillus flavus" assembly_summary_genbank.txt > aspergillus_assemb
 	
 We do have 17 assemblies of `Aspergillus flavus` available in this FTP site. Guess what, not all of them are of importance to us. I want only assemblies at the chromosome level. Remember that there can be different types of assembly levels [See above](../../afternoon/terminology/#sequence-assembly). We want to sort by column to select those Chromosomal assemblies (if any). Now that we have retrieved data we will learn how to filter by column in the next session. 
 
-Well, let me introduce you to the beautiful `awk` (We will be seeing more of `AWK` under [Regular Expressions](../regex))
+Well, let me introduce you to the beautiful `awk` (We will be seeing more of `awk` under [Regular Expressions](../regex))
 
 ```bash 
 awk -F'\t' '$12 == "Chromosome"' aspergillus_assemblies.txt | wc -l 
 ```
-		3
+		0
 		
 > **Can somebody tell me what are we doing with the above code?**
 
+
+
 We are piping the output of `awk` to a `wc` command that is the famous `word count`. You can count how many lines are found in a file with `wc -l`.
 
-Redirecting the output to a new file: 
+Unfortunately, we have `0` crhomosomal assemblies. Now let's try Scaffolds. 
+
+{{% notice tip %}} TASK 1: Complete the following tab-delimited table with information about how many assemblies are at the chromosome, scaffold and contig level. The table must look something like this:
+
+Assembly level | Number of assemblies
+--------|------
+Chromosome | 0
+Scaffold | --
+Contig | --
+
+
+**HINT:** You can create a for loop
+
+{{% /notice %}}
+
+
+#### Solution 1
+First we need to know which list will be used in our for loop. In this case I want a list of `Chromosome, Scaffold and Contig`. Then you create the `loop` like so:
+
+```bash
+for i in Chromosome Scaffold Contig
+do
+assemblies=`awk -v var="$i" -F'\t' '$12 == Chromosome' aspergillus_assemblies.txt | wc -l`
+echo -e $i'\t'$assemblies >> table_assemblies.txt
+echo -e $i'\t'$assemblies
+done
+```
+
+Did you really try to only copy and paste the loop and got an error? Try harder..... Focus on the `var`
+
+
+The result should look something like this:
+
+	[asecas86@n252 afternoon]$ for i in Chromosome Scaffold Contig
+	> do
+	> assemblies=`awk -v var="$i" -F'\t' '$12 == var' aspergillus_assemblies.txt | wc -l`
+	> echo -e $i ' \t ' $assemblies >> table_assemblies.txt
+	> echo -e $i ' \t ' $assemblies
+	> done
+	Chromosome        0
+	Scaffold          5
+	Contig            12
+
+
+Let us retrieve only the best assemblies, in this case lets select `Scaffolds`
+
 
 ```bash 
-$ awk -F'\t' '$12 == "Chromosome"' aspergillus_assemblies.txt > chr_aspergillus_assemblies.txt
+$ awk -F'\t' '$12 == "Scaffold"' aspergillus_assemblies.txt > chr_aspergillus_assemblies.txt
 ``` 
 
-Let's check those 3 entries by using `head` 
+Let's check those 5 entries by using `head` 
 
 ```bash
 head chr_aspergillus_assemblies.txt
@@ -194,23 +241,30 @@ I want to get the ftp address to download those files.
 $ awk -F'\t' '{print $20}' chr_aspergillus_assemblies.txt > ftp-ids.txt
 ```
 
-and finally check if you got the three ftp addresses. 
+and finally check if you got the `five` ftp addresses. 
 
 ```bash
 $ less ftp-ids.txt
 ```
 
-We want to compare these three genomes and we want to get the genome files and the annotation files (gff or gtf)
+We want to compare these five genomes.  Therefore, we want to get the genome files and the annotation files (fasta and gff or gtf)
 
-You can open one of the files to explore the directory, for example, let's explore ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/002/655/GCA_000002655.1_ASM265v1
+You can open one of the files to explore the directory, for example, let's explore this:  ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/443/195/GCA_002443195.1_AflaGuard
 
-There are multiple files inside this directory, we are interested in `.fna` files. Let's target those files with a `wildcard` and a `while` loop.
+ {{< figure 
+src="../../images/aflaguard.png" title="" 
+>}}
 
-First let's make a dir for the genomes
+There are multiple files inside this directory, we are interested in `.fna` and `gff` or `gtf` files. Let's target those files with a `wildcard` and a `while` loop.
+
+First let's make a dir for the genomes and annotations that we will retrieve:
 
 ```bash
 $ mkdir genomes
 ```
+
+Now finally let us retrieve those files with the following loop:
+
 
 ```bash
 while read p; do
@@ -219,9 +273,28 @@ wget -P genomes/ $p/*.fna.gz
 done <ftp-ids.txt
 ```
 
+Now check what files you downloaded:
+
+```bash
+ls -lth genomes/
+```
+
+	total 77M
+	-r--r--r-- 1 asecas86 clusterusers  12M Jan  5 22:21 GCA_002864195.1_ASM286419v1_genomic.fna.gz
+	-r--r--r-- 1 asecas86 clusterusers  11M Dec 14 01:09 GCA_002456175.1_AF36_genomic.fna.gz
+	-r--r--r-- 1 asecas86 clusterusers  12M Nov 17 11:31 GCA_002443215.1_K49_genomic.fna.gz
+	-r--r--r-- 1 asecas86 clusterusers  11M Nov 17 11:29 GCA_002443195.1_AflaGuard_genomic.fna.gz
+	-r--r--r-- 1 asecas86 clusterusers 5.9M Nov 13 05:26 GCA_000006275.2_JCVI-afl1-v2.0_cds_from_genomic.fna.gz
+	-r--r--r-- 1 asecas86 clusterusers 5.9M Nov 13 05:26 GCA_000006275.2_JCVI-afl1-v2.0_rna_from_genomic.fna.gz
+	-r--r--r-- 1 asecas86 clusterusers  12M Jun 16  2016 GCA_000006275.2_JCVI-afl1-v2.0_genomic.fna.gz
+
+you should have 5 files, why do we have 7?
+
+This is because these folders contain all information about annotations and sometimes they include `CDS` which stand for coding regions or `rna` which are regions that were mapped to the genome using its transcripts. It seems like the only one that has this issue is `JCVI` assembly. 
+
 ### File compression
 
-Most files in bioinformatics are shared compressed, otherwise they can weight many Gigabytes. The most common compression that you will find online is `.gz`.  The best way to uncompress this type of files is by typing `gunzip *.gz`
+Most files in bioinformatics are compressed to allow fast sharing, otherwise they can weight many Gigabytes. The most common compression that you will find online is `.gz`.  The best way to uncompress this type of files is by typing `gunzip *.gz`
 
 We can try that with a loop
 
@@ -240,9 +313,11 @@ done
 DONE, now you have `fasta` files to analyze. And this is the way you retrieve data in bulk from ftp sites. 
 
 
+{{% notice tip %}}
+TASK 2: Download all the `gff` or `gtf` files associated to these five genomes and put them in a folder called `annotations`
 
-> ### FIVE Minute task #1
-> Download those three genomes. I should retrieve the ftp address for each of them from `chr_aspergillus_assemblies.txt`. Use `awk` to write the output to a new `.txt` file. 
-
-{{% notice tip %}} Use `awk` and select a different column number. [Sol.](https://gist.github.com/andrese52/cd4cbf0b9bf37d342e1eec0950a00508) 
+**HINT** use `mkdir annotations` in your `afternoon` directory 
 {{% /notice %}}
+
+#### Solution 2
+
