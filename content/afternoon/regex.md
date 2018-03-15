@@ -13,10 +13,26 @@ pre: "<b>3.2 </b>"
 - [sort, uniq, cut, etc.](#sort-uniq-cut-etc)
 - [GFF3 Annotations](#gff3-annotations)
 
+## Downloading data
+
+We must first have a dataset to work with. Then, let's move to our `scratch` directory.
+
+```bash
+cd /scratch/asecas86
+```
+
+
+
+Now lets clone one dataset that has been prepared **specially only for you** to work on. 
+
+
+
+
 
 ## Basic awk
 
 [[back to top](#contents)]
+
 
 Very helpful command to separate columns. Similar to excel.
 

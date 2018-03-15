@@ -140,28 +140,32 @@ $ less README_assembly_summary.txt
  
 Let's focus on our organism of interest `Aspergillus flavus`. Let's try searching for our pathogen in the database: 
 ```bash 
-$ grep "aspergillus" assembly_summary_genbank.txt
+$ grep "aspergillus flavus" assembly_summary_genbank.txt
 ``` 
 
 > ***What did you get as output from the previous code?*** **NOTHING? HOW COME??**
 
 Try this 
 ```bash 
-$ grep -i "aspergillus" assembly_summary_genbank.txt
+$ grep -i "aspergillus flavus" assembly_summary_genbank.txt
 ``` 
 
 {{% notice note %}} Take 1 minute to understand why this happened {{% /notice %}} 
 
+You are right, this is because you added the `-i` argument which asks for `case insensitive`
 
-Let's count how many entries for `Aspergillus flavus` we have and at the same time let's redirect our entries to a file named `aspergillus_assemblies.txt` 
+
+- Let's count how many entries for `Aspergillus flavus` we have and at the same time let's redirect our entries to a file named `aspergillus_assemblies.txt` 
 
 ```bash 
-$ grep -ic "aspergillus" assembly_summary_genbank.txt
-$ grep -i "aspergillus" assembly_summary_genbank.txt > aspergillus_assemblies.txt 
+$ grep -ic "aspergillus flavus" assembly_summary_genbank.txt
+$ grep -i "aspergillus flavus" assembly_summary_genbank.txt > aspergillus_assemblies.txt 
 ```
-	110
+	17
 	
-We do have 110 assemblies of `Aspergillus flavus` available in this FTP site. Guess what, not all of them are of importance to us. I want only assemblies at the chromosome level. Remember that there can be different types of assembly levels [See above](../../afternoon/terminology/#sequence-assembly). We want to sort by column to select those Chromosomal assemblies (if any). Well, let me introduce you to the beautiful `awk`
+We do have 17 assemblies of `Aspergillus flavus` available in this FTP site. Guess what, not all of them are of importance to us. I want only assemblies at the chromosome level. Remember that there can be different types of assembly levels [See above](../../afternoon/terminology/#sequence-assembly). We want to sort by column to select those Chromosomal assemblies (if any). Now that we have retrieved data we will learn how to filter by column in the next session. 
+
+Well, let me introduce you to the beautiful `awk` (We will be seeing more of `AWK` under [Regular Expressions](../regex))
 
 ```bash 
 awk -F'\t' '$12 == "Chromosome"' aspergillus_assemblies.txt | wc -l 
