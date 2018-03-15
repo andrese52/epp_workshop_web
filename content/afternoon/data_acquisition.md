@@ -311,11 +311,20 @@ done
 ```
 
 DONE, now you have `fasta` files to analyze. And this is the way you retrieve data in bulk from ftp sites. 
+Notice that the directory size increased to 247 MB.
 
+	total 247M
+	-r--r--r-- 1 asecas86 clusterusers 37M Jan  5 22:21 GCA_002864195.1_ASM286419v1_genomic.fna
+	-r--r--r-- 1 asecas86 clusterusers 36M Dec 14 01:09 GCA_002456175.1_AF36_genomic.fna
+	-r--r--r-- 1 asecas86 clusterusers 36M Nov 17 11:31 GCA_002443215.1_K49_genomic.fna
+	-r--r--r-- 1 asecas86 clusterusers 36M Nov 17 11:29 GCA_002443195.1_AflaGuard_genomic.fna
+	-r--r--r-- 1 asecas86 clusterusers 20M Nov 13 05:26 GCA_000006275.2_JCVI-afl1-v2.0_cds_from_genomic.fna
+	-r--r--r-- 1 asecas86 clusterusers 20M Nov 13 05:26 GCA_000006275.2_JCVI-afl1-v2.0_rna_from_genomic.fna
+	-r--r--r-- 1 asecas86 clusterusers 36M Jun 16  2016 GCA_000006275.2_JCVI-afl1-v2.0_genomic.fna
 
-{{% notice tip %}}
+#### TASK 2
 TASK 2: Download all the `gff` or `gtf` files associated to these five genomes and put them in a folder called `annotations`
-
+{{% notice tip %}}
 **HINT** use `mkdir annotations` in your `afternoon` directory 
 {{% /notice %}}
 
