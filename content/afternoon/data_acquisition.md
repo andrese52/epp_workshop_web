@@ -297,7 +297,7 @@ Now finally let us retrieve those files with the following loop:
 ```bash
 while read p; do
   echo $p
-wget -P genomes/ $p/*.fna.gz
+wget -P genomes/$p/*.fna.gz
 done <ftp-ids.txt
 ```
 
@@ -396,7 +396,7 @@ cd ..
 ```bash
 while read p; do
 	echo $p
-	wget -P annotations/ $p/*.gff.gz
+	wget -P annotations/$p/*.gff.gz
 done <ftp-ids.txt
 ```
 
@@ -433,7 +433,16 @@ Check what you got:
 ```bash
 ls -lth
 ```
- 
+
+You should have 5 files. If you have more or less, then you did something wrong!
+
+	total 29M
+	-r--r--r-- 1 asecas86 clusterusers 47K Jan  5 22:21 GCA_002864195.1_ASM286419v1_genomic.gff
+	-r--r--r-- 1 asecas86 clusterusers 31K Dec 14 01:09 GCA_002456175.1_AF36_genomic.gff
+	-r--r--r-- 1 asecas86 clusterusers 32K Nov 17 11:31 GCA_002443215.1_K49_genomic.gff
+	-r--r--r-- 1 asecas86 clusterusers 29K Nov 17 11:29 GCA_002443195.1_AflaGuard_genomic.gff
+	-r--r--r-- 1 asecas86 clusterusers 26M Nov 13 05:26 GCA_000006275.2_JCVI-afl1-v2.0_genomic.gff
+
  
 In the upcoming modules you will learn how to iterate through the files that we just downloaded to compare basic metrics. Now, please get some fresh air. 
 

@@ -13,19 +13,27 @@ pre: "<b>3.3 </b>"
 - [sort, uniq, cut, etc.](#sort-uniq-cut-etc)
 - [GFF3 Annotations](#gff3-annotations)
 
-## Downloading data
 
-We must first have a dataset to work with. Then, let's move to our `scratch` directory.
+
+## Intro
+A regular expression, regex or regexp (sometimes called a rational expression) is, in theoretical computer science and formal language theory, a sequence of characters that define a search pattern. Usually this pattern is then used by string searching algorithms for "find" or "find and replace" operations on strings.
+
+Multiple tools in LINUX can be utilized to find regular expressions. The most common one is `grep` which you already used during the morning. 
+
+Now there are a couple of more powerful tools that work with regular expressions, these are `awk` and `sed`. 
+
+
+For example: the most basic `awk` command looks like this:
 
 ```bash
-cd /scratch/asecas86
+awk '/pattern/{ print $0 }' file
 ```
 
+Let's move to one of our `afternoon` directories. 
 
-
-Now lets clone one dataset that has been prepared **specially only for you** to work on. 
-
-
+```bash
+cd /scratch/asecas86/afternoon
+```
 
 
 
@@ -33,6 +41,20 @@ Now lets clone one dataset that has been prepared **specially only for you** to 
 
 [[back to top](#contents)]
 
+
+We will be using basic `awk` with our `fna` and `gff` files. Lets start with `fna` files.
+
+Let's move to `genomes`
+
+```bash 
+cd genomes
+```
+
+Now select the following file: `GCA_002443195.1_AflaGuard_genomic.fna` and run the following command:
+
+```bash
+awk '/NNNNN/{ print $0 }' GCA_002443195.1_AflaGuard_genomic.fna
+```
 
 Very helpful command to separate columns. Similar to excel.
 
