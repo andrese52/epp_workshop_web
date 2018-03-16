@@ -95,6 +95,112 @@ Now you can execute your first script
 $ ./myfirstscript.sh 
 ```
 
-Do you want to try something more difficult: 
+Do you want to try something more difficult: YASSSS 
+
+### Building a script that contains `arguments`
+
+Many scripts are created to facilitate the user typing the same code over and over again. Most of the scripts have inputs and outputs. In our previous script we did not have any of those. 
+
+The easiest way to create a `bash` script with `input` `output` feature is by adding `argument` options to the script. 
+
+For example, one of the scripts that we previously used to linearize `fasta` contained one `argument`.
+
+```bash
+$bash linearize.sh genome.fasta
+```
+The `genome.fasta` was the argument at that moment. 
+
+Let's modify the previous script in order to take `arguments`. 
+
+```bash
+$ nano myfirstscript.sh
+```
+
+	  GNU nano 2.0.9            File: myfirstscript.sh                    Modified
+
+	#!/bin/bash
+
+	# declare STRING variable
+	STRING=$1
+	#print variable on a screen
+	echo $STRING
+
+
+
+
+
+
+
+
+
+
+
+
+
+	Save modified buffer (ANSWERING "No" WILL DESTROY CHANGES) ?
+	 Y Yes
+	 N No           ^C Cancel
+
+
+Hit `Y` to save and then let's run the program with arguments
+
+
+> #### TASK 6
+> Create a Script that takes your `first name` and your `last name` as `arguments` and print them in the reverse order. 
+
+
+Ideally, you can use all the information given in this small workshop to use different manipulation techniques and put them in a `script` that you can run on an everyday basis. 
+
+
+### Using the `TORQUE` scheduler to submit jobs in pistol pete HPC
+
+Although we have been using the `login` nodes throughout this workshop. It is very very important to understand that computing intensive jobs **must** be submitted through the HPC scheduler. Now I will teach you how to do it. 
+
+All this information and guidelines are found at the [HPC online tutorial](https://hpcc.okstate.edu/content/new-user-tutorial).  However, this is a very brief explanation how to use and submit a very basic job. 
+
+
+- First, to submit your job you need to have a `submission script` which contains all the arguments for submission. Let's create a basic one:
+
+```bash
+nano my_first_pbs_script.pbs
+```
+
+Then we want to type the following inside that script. (Please copy and paste this part inside your nano prompt)
+
+
+	#!/bin/bash
+	#PBS -q express
+	#   specify the queue batch, express or bigmem
+	#PBS -l nodes=1:ppn=1
+	#   request 1 processor on 1 node
+	#PBS -l walltime=10:00
+	#   choose a walltime slightly longer than your job will take
+	#PBS -j oe
+	cd $PBS_O_WORKDIR
+	module load python/3.5.0
+	 
+	myfirstscript.sh
+	
+
+Once you have finished modifying you save it and submit the job as follows:
+
+```bash
+qsub my_first_pbs_script.pbs
+```
+
+You can check your position in que queue by typing
+
+```bash
+qstat -n | grep "yourusername"
+```
+
+Your STDOUT output will be written into a file that is created by the `TORQUE` scheduler. 
+
+
+And that's all FOLKS.
+
+
+
+
 
 
