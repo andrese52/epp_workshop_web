@@ -56,6 +56,66 @@ Now select the following file: `GCA_002443195.1_AflaGuard_genomic.fna` and run t
 awk '/NNNNN/{ print $0 }' GCA_002443195.1_AflaGuard_genomic.fna
 ```
 
+Pretty nasty output. We must linearize first the fasta files.  There is this very helpful script that linearizes any fasta file. Let's download it first. 
+
+```bash
+wget --no-check-certificate https://raw.githubusercontent.com/andrese52/Training_datasets_scripting/master/scripts/linearize.sh
+```
+
+Let's check how many lines `GCA_002443195.1_AflaGuard_genomic.fna` has prior linearizing it.
+
+```bash
+$ wc -l GCA_002443195.1_AflaGuard_genomic.fna
+```
+
+	453747 GCA_002443195.1_AflaGuard_genomic.fna
+
+
+Run the script as follows:
+
+```bash
+$ bash linearize.sh GCA_002443195.1_AflaGuard_genomic.fna
+```
+
+This script manipulates the fasta file and just reformats it to have the following format:
+
+	>seq1
+	ATCCCCCCC
+	>seq2
+	ATCTCTCT
+
+
+
+Once the file is linearized, count the lines again like so: 
+
+```bash
+$ wc -l linearized_GCA_002443195.1_AflaGuard_genomic.fna
+```
+
+	196 linearized_GCA_002443195.1_AflaGuard_genomic.fna
+
+BOOM!! You have linearized a .fasta file.  This is very helpful to manipulate the file and get metrics and regular expressions. 
+
+Let's make sure the file was correctly linearized by counting the number of fasta headers in the original file. The count should give 196/2 = 98. Let's check!!
+
+```bash
+$ grep -c ">" GCA_002443195.1_AflaGuard_genomic.fna
+```
+	98
+
+
+GREAT, you just linearized a `fasta` file. Now let's get some metrics. 
+
+
+### Identifying patterns in `fasta` files with `awk`
+
+An important pattern to find are those nucleotides that have not been yet identifyed due no low quality sequencing. We might want to eliminate `contigs` or `scaffolds` containing these `NNNN` patterns since they are not useful for downstream analyses. Let's check:
+
+
+```bash
+$ awk '/NNNNN/{ print $0 }' linearized_GCA_002443195.1_AflaGuard_genomic.fna
+```
+
 Very helpful command to separate columns. Similar to excel.
 
 Extract fields 2, 4, and 5 from file.txt:

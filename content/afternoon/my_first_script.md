@@ -44,11 +44,16 @@ instead.
 title="" >}}
  
 Now that you know how to use `nano`. We can create your first script. 
-First let's remove that file that you recently created. ```bash $ rm 
-myfirstscript.txt ``` Any script in Linux should start with 
-[**shebang:"#!"**](https://en.wikipedia.org/wiki/Shebang_(Unix)). Start 
-another `nano` document: ```bash $ nano myfirstscript.sh ``` Type the 
-following in the editor:
+First let's remove that file that you recently created. 
+
+```bash 
+$ rm myfirstscript.txt ```
+
+Any script in Linux should start with [**shebang:"#!"**](https://en.wikipedia.org/wiki/Shebang_(Unix)). Start another `nano` document: 
+```bash 
+$ nano myfirstscript.sh 
+``` 
+Type the following in the editor:
 	#!/bin/bash
 	# declare STRING variable
 	STRING="Pistol Pete"
@@ -57,7 +62,15 @@ following in the editor:
 	
 Everything of what you are writing in your first bash script has been 
 already covered during the [morning session](../../morning). Save the 
-file and now we need to make it executable. ```bash $ chmod +x 
-myfirstscript.sh ``` Now you can execute your first script ```bash $ 
-./myfirstscript.sh ```
+file and now we need to make it executable.
+
+```bash 
+$ chmod +x myfirstscript.sh ```
+
+Now you can execute your first script 
+```bash $ 
+./myfirstscript.sh 
+```
+
+
 https://linuxconfig.org/bash-scripting-tutorial
