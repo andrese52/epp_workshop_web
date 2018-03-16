@@ -109,12 +109,67 @@ GREAT, you just linearized a `fasta` file. Now let's get some metrics.
 
 ### Identifying patterns in `fasta` files with `awk`
 
-An important pattern to find are those nucleotides that have not been yet identifyed due no low quality sequencing. We might want to eliminate `contigs` or `scaffolds` containing these `NNNN` patterns since they are not useful for downstream analyses. Let's check:
+An important pattern to find are those nucleotides that have not been identified yet due to low quality sequencing. We might want to eliminate `contigs` or `scaffolds` containing these `NNNN` patterns since they are not useful for downstream analyses (this varies depending on the researcher's needs). Let's check:
 
 
 ```bash
-$ awk '/NNNNN/{ print $0 }' linearized_GCA_002443195.1_AflaGuard_genomic.fna
+$ awk '/NNNNN/{ print $0 }' linearized_GCA_002443195.1_AflaGuard_genomic.fna | wc -l
 ```
+	32
+	
+So, 32 out of 98 contigs have some sort of `NNNNN` patterns of at least 5 Ns. 
+
+
+
+Let's get the sequence lengths of the current scaffolds
+
+```bash
+cat linearized_GCA_002443195.1_AflaGuard_genomic.fna  | awk 'NR%2==0' | awk '{print length($1)}'
+```
+
+- What is happening above is that `NR%2==0` is requesting that every even line in the file is printed, then these lines are piped into another awk that gives the length of the sequence.
+
+- We can also redirect the output to a new file.
+
+```bash
+cat linearized_GCA_002443195.1_AflaGuard_genomic.fna  | awk 'NR%2==0' | awk '{print length($1)}' > read_dist_GCA_002443195.1_AflaGuard_genomic.fna
+```
+
+Now let's check the read distribution file
+
+```bash
+head -n 5 read_dist_GCA_002443195.1_AflaGuard_genomic.fna
+```
+
+It appears like some scaffolds have 4 million nucleotides 
+
+	4471384
+	4150194
+	2714413
+	2659415
+	2557007
+	
+> #### Task 3
+> Linearize the fasta file `GCA_000006275.2_JCVI-afl1-v2.0_genomic.fna` and count the number of nucleotides on each scaffold.
+
+
+
+```bash
+$ bash linearize.sh GCA_000006275.2_JCVI-afl1-v2.0_genomic.fna
+$ cat linearized_GCA_000006275.2_JCVI-afl1-v2.0_genomic.fna  | awk 'NR%2==0' | awk '{print length($1)}' > read_dist_GCA_000006275.2_JCVI-afl1-v2.0_genomic.fna
+```
+
+
+Once you have both files let's get the shortest contig lenghts: 
+
+```bash
+sort -n read_dist_GCA_002443195.1_AflaGuard_genomic.fna | head -n 1
+sort -n read_dist_GCA_000006275.2_JCVI-afl1-v2.0_genomic.fna | head -n 1
+```
+
+> #### Task 4
+> Obtain the largest contig length on both genomes 
+
 
 Very helpful command to separate columns. Similar to excel.
 
