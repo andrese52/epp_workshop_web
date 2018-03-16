@@ -1,9 +1,23 @@
 ---
 title: Data Acquisition
-weight: 3
+weight: 2
 chapter: false
-pre: "<b>3.3 </b>"
+pre: "<b>3.2 </b>"
 ---
+
+## Contents
+
+- [Introduction](#Intro)
+- [Back to the terminal](#back-to-the-terminal)
+- [Retrieving my first ftp file](#retrieving-my-first-ftp-file)
+- [Filtering Data](#filtering-data)
+- [Task 1](#task-1)
+- [Task 2](#task-2)
+
+## Intro
+[[back to top](#contents)]
+
+
 {{% notice note %}} While using coding and bioinformatics, we want to 
 avoid using graphical user interphases (GUIs) as much as we can. Can 
 somebody answer why? {{% /notice %}}
@@ -45,7 +59,10 @@ something like this:
 	├── [2.4M] assembly_summary_refseq_historical.txt
 	└── [ 34M] assembly_summary_refseq.txt
 	
-### Back to the terminal
+## Back to the terminal
+[[back to top](#contents)]
+
+
 Create a new folder in your `/scratch/username` directory named 
 `afternoon` and move inside the `afternoon` folder: 
 
@@ -65,6 +82,9 @@ you should get something like this:
 > My username is ***asecas86*** (you already learned this)
 	
 Now, let us retrieve the `assembly_summary_genbank.txt`
+
+## Retrieving my first ftp file
+[[back to top](#contents)]
 
 
 ```bash 
@@ -137,13 +157,16 @@ $ less README_assembly_summary.txt
 
  
 
- 
+## Filtering Data
+[[back to top](#contents)]
+
+
 Let's focus on our organism of interest `Aspergillus flavus`. Let's try searching for our pathogen in the database: 
 ```bash 
 $ grep "aspergillus flavus" assembly_summary_genbank.txt
 ``` 
 
-> ***What did you get as output from the previous code?*** **NOTHING? HOW COME??**
+***What did you get as output from the previous code?*** **NOTHING? HOW COME??**
 
 Try this 
 ```bash 
@@ -172,7 +195,7 @@ awk -F'\t' '$12 == "Chromosome"' aspergillus_assemblies.txt | wc -l
 ```
 		0
 		
-> **Can somebody tell me what are we doing with the above code?**
+**Can somebody tell me what are we doing with the above code?**
 
 
 
@@ -180,15 +203,20 @@ We are piping the output of `awk` to a `wc` command that is the famous `word cou
 
 Unfortunately, we have `0` crhomosomal assemblies. Now let's try Scaffolds. 
 
-{{% notice tip %}} TASK 1: Complete the following tab-delimited table with information about how many assemblies are at the chromosome, scaffold and contig level. The table must look something like this:
+> #### TASK 1:
 
-Assembly level | Number of assemblies
+> [[back to top](#contents)]
+
+
+> Complete the following tab-delimited table with information about how many assemblies are at the chromosome, scaffold and contig level. The table must look something like this:
+
+>Assembly level | Number of assemblies
 --------|------
 Chromosome | 0
 Scaffold | --
 Contig | --
 
-
+>{{% notice tip %}}
 **HINT:** You can create a for loop
 
 {{% /notice %}}
@@ -322,11 +350,91 @@ Notice that the directory size increased to 247 MB.
 	-r--r--r-- 1 asecas86 clusterusers 20M Nov 13 05:26 GCA_000006275.2_JCVI-afl1-v2.0_rna_from_genomic.fna
 	-r--r--r-- 1 asecas86 clusterusers 36M Jun 16  2016 GCA_000006275.2_JCVI-afl1-v2.0_genomic.fna
 
-#### TASK 2
-TASK 2: Download all the `gff` or `gtf` files associated to these five genomes and put them in a folder called `annotations`
+> #### TASK 2
+
+> [[back to top](#contents)]
+
+
+> Download all the `gff` or `gtf` files associated to these five genomes and put them in a folder called `annotations`
 {{% notice tip %}}
-**HINT** use `mkdir annotations` in your `afternoon` directory 
+**HINT:** use `mkdir annotations` in your `afternoon` directory 
 {{% /notice %}}
 
 #### Solution 2
 
+```bash
+$ mkdir ../annotations
+```
+What would you change in the following code to get gff files
+```bash
+while read p; do
+	echo $p
+	wget -P annotations/ $p/*.fna.gz
+done <ftp-ids.txt
+```
+
+You will not get a single cup of coffee if you do not solve this loop as expected. 
+ {{< figure 
+src="https://media.giphy.com/media/7qV3yswT0K8hi/giphy.gif" title="" 
+>}}
+
+What about this Solution?? (Think twice before copying and pasting this one): 
+```bash
+p="u r 2 Lazy"
+for i in {1..100}
+do
+	echo $p $i "Times"
+done
+```
+Ok try the loop with `gff` but first:
+
+```bash
+cd ..
+```
+ Then:
+
+```bash
+while read p; do
+	echo $p
+	wget -P annotations/ $p/*.gff.gz
+done <ftp-ids.txt
+```
+
+Let's see what we got:
+
+```bash
+ls -lth annotations/
+```
+
+	total 3.0M
+	-r--r--r-- 1 asecas86 clusterusers 4.2K Jan  5 22:21 GCA_002864195.1_ASM286419v1_genomic.gff.gz
+	-r--r--r-- 1 asecas86 clusterusers 3.3K Dec 14 01:09 GCA_002456175.1_AF36_genomic.gff.gz
+	-r--r--r-- 1 asecas86 clusterusers 3.3K Nov 17 11:31 GCA_002443215.1_K49_genomic.gff.gz
+	-r--r--r-- 1 asecas86 clusterusers 3.1K Nov 17 11:29 GCA_002443195.1_AflaGuard_genomic.gff.gz
+	-r--r--r-- 1 asecas86 clusterusers 2.3M Nov 13 05:26 GCA_000006275.2_JCVI-afl1-v2.0_genomic.gff.gz
+
+Uncompress:
+```bash
+cd annotations
+```
+
+and finally
+
+```bash
+for i in *.gz
+do
+	echo "Unzipping $i"
+	gunzip $i
+done 
+```
+
+Check what you got: 
+
+```bash
+ls -lth
+```
+ 
+ 
+In the upcoming modules you will learn how to iterate through the files that we just downloaded to compare basic metrics. Now, please get some fresh air. 
+
+ [[back to top](#contents)]
