@@ -74,6 +74,7 @@ Any script in Linux should start with [**shebang:"#!"**](https://en.wikipedia.or
 $ nano myfirstscript.sh 
 ``` 
 Type the following in the editor:
+
 	#!/bin/bash
 	# declare STRING variable
 	STRING="Pistol Pete"
