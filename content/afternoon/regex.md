@@ -26,13 +26,13 @@ Now there are a couple of more powerful tools that work with regular expressions
 For example: the most basic `awk` command looks like this:
 
 ```bash
-awk '/pattern/{ print $0 }' file
+$ awk '/pattern/{ print $0 }' file
 ```
 
 Let's move to one of our `afternoon` directories. 
 
 ```bash
-cd /scratch/asecas86/afternoon
+$ cd /scratch/asecas86/afternoon
 ```
 
 
@@ -47,19 +47,19 @@ We will be using basic `awk` with our `fna` and `gff` files. Lets start with `fn
 Let's move to `genomes`
 
 ```bash 
-cd genomes
+$ cd genomes
 ```
 
 Now select the following file: `GCA_002443195.1_AflaGuard_genomic.fna` and run the following command:
 
 ```bash
-awk '/NNNNN/{ print $0 }' GCA_002443195.1_AflaGuard_genomic.fna
+$ awk '/NNNNN/{ print $0 }' GCA_002443195.1_AflaGuard_genomic.fna
 ```
 
 Pretty nasty output. We must linearize first the fasta files.  There is this very helpful script that linearizes any fasta file. Let's download it first. 
 
 ```bash
-wget --no-check-certificate https://raw.githubusercontent.com/andrese52/Training_datasets_scripting/master/scripts/linearize.sh
+$ wget --no-check-certificate https://raw.githubusercontent.com/andrese52/Training_datasets_scripting/master/scripts/linearize.sh
 ```
 
 Let's check how many lines `GCA_002443195.1_AflaGuard_genomic.fna` has prior linearizing it.
@@ -124,7 +124,7 @@ So, 32 out of 98 contigs have some sort of `NNNNN` patterns of at least 5 Ns.
 Let's get the sequence lengths of the current scaffolds
 
 ```bash
-cat linearized_GCA_002443195.1_AflaGuard_genomic.fna  | awk 'NR%2==0' | awk '{print length($1)}'
+$ cat linearized_GCA_002443195.1_AflaGuard_genomic.fna  | awk 'NR%2==0' | awk '{print length($1)}'
 ```
 
 - What is happening above is that `NR%2==0` is requesting that every even line in the file is printed, then these lines are piped into another awk that gives the length of the sequence.
@@ -132,13 +132,13 @@ cat linearized_GCA_002443195.1_AflaGuard_genomic.fna  | awk 'NR%2==0' | awk '{pr
 - We can also redirect the output to a new file.
 
 ```bash
-cat linearized_GCA_002443195.1_AflaGuard_genomic.fna  | awk 'NR%2==0' | awk '{print length($1)}' > read_dist_GCA_002443195.1_AflaGuard_genomic.fna
+$ cat linearized_GCA_002443195.1_AflaGuard_genomic.fna  | awk 'NR%2==0' | awk '{print length($1)}' > read_dist_GCA_002443195.1_AflaGuard_genomic.fna
 ```
 
 Now let's check the read distribution file
 
 ```bash
-head -n 5 read_dist_GCA_002443195.1_AflaGuard_genomic.fna
+$ head -n 5 read_dist_GCA_002443195.1_AflaGuard_genomic.fna
 ```
 
 It appears like some scaffolds have 4 million nucleotides 
@@ -163,8 +163,8 @@ $ cat linearized_GCA_000006275.2_JCVI-afl1-v2.0_genomic.fna  | awk 'NR%2==0' | a
 Once you have both files let's get the shortest contig lenghts: 
 
 ```bash
-sort -n read_dist_GCA_002443195.1_AflaGuard_genomic.fna | head -n 1
-sort -n read_dist_GCA_000006275.2_JCVI-afl1-v2.0_genomic.fna | head -n 1
+$ sort -n read_dist_GCA_002443195.1_AflaGuard_genomic.fna | head -n 1
+$ sort -n read_dist_GCA_000006275.2_JCVI-afl1-v2.0_genomic.fna | head -n 1
 ```
 
 
@@ -183,7 +183,7 @@ First let's move to the `annotations` directory
 
 
 ```bash
-cd ../annotations
+$ cd ../annotations
 ```
 
 **We will be working on the annotations of the same two genomes that we used for counting the length of each scaffold.**
@@ -209,7 +209,7 @@ Position index	| Position name	| Description
 It would be good if we first explore the header:
 
 ```bash
-head -n 5 GCA_000006275.2_JCVI-afl1-v2.0_genomic.gff
+$ head -n 5 GCA_000006275.2_JCVI-afl1-v2.0_genomic.gff
 ```
 
 The header contains a lot of information about generalities of the annotation and the genome itself. We must skip these first lines. They are usually not tab-delimited.
@@ -217,14 +217,14 @@ The header contains a lot of information about generalities of the annotation an
 The best way to do it is just by targetting lines of interest, for example I am interested in aflatoxin genes. Therefore I will `grep` the file for the pattern `aflatoxin`.
 
 ```bash
-grep -i "aflatoxin" GCA_000006275.2_JCVI-afl1-v2.0_genomic.gff
+$ grep -i "aflatoxin" GCA_000006275.2_JCVI-afl1-v2.0_genomic.gff
 ```
 
 Since I am interested only on those genes I will redirect the output. 
 
 
 ```bash
-grep -i "aflatoxin" GCA_000006275.2_JCVI-afl1-v2.0_genomic.gff > aflatoxin_genes.gff
+$ grep -i "aflatoxin" GCA_000006275.2_JCVI-afl1-v2.0_genomic.gff > aflatoxin_genes.gff
 ```
 
 
@@ -234,15 +234,15 @@ Now let's analyze by column. Usually the word `aflatoxin` should be found in the
 
 Print each line where the 9th field is similar to `aflatoxin`:
 ```bash
-    awk -F "\t" '$9 ~ "aflatoxin"' GCA_000006275.2_JCVI-afl1-v2.0_genomic.gff
+$ awk -F "\t" '$9 ~ "aflatoxin"' GCA_000006275.2_JCVI-afl1-v2.0_genomic.gff
 ```
 
 Now let's check the difference between `grep` and `awk`
 
 
 ```bash
-grep -i "aflatoxin" GCA_000006275.2_JCVI-afl1-v2.0_genomic.gff | wc -l
-awk -F "\t" '$9 ~ "aflatoxin"' GCA_000006275.2_JCVI-afl1-v2.0_genomic.gff | wc -l
+$ grep -i "aflatoxin" GCA_000006275.2_JCVI-afl1-v2.0_genomic.gff | wc -l
+$ awk -F "\t" '$9 ~ "aflatoxin"' GCA_000006275.2_JCVI-afl1-v2.0_genomic.gff | wc -l
 ```
 
 We must get the same result for both which is 107 entries. 
@@ -253,7 +253,7 @@ We have already redirected the aflatoxin annotations to a separate file. Now let
 We can get all the positive sense `CDS` and count them
 
 ```bash
-awk -F "\t" '$7 == "+"' aflatoxin_genes.gff | wc -l
+$ awk -F "\t" '$7 == "+"' aflatoxin_genes.gff | wc -l
 ```
 
 	45

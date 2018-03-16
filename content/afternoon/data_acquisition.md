@@ -191,7 +191,7 @@ We do have 17 assemblies of `Aspergillus flavus` available in this FTP site. Gue
 Well, let me introduce you to the beautiful `awk` (We will be seeing more of `awk` under [Regular Expressions](../regex))
 
 ```bash 
-awk -F'\t' '$12 == "Chromosome"' aspergillus_assemblies.txt | wc -l 
+$ awk -F'\t' '$12 == "Chromosome"' aspergillus_assemblies.txt | wc -l 
 ```
 		0
 		
@@ -260,7 +260,7 @@ $ awk -F'\t' '$12 == "Scaffold"' aspergillus_assemblies.txt > chr_aspergillus_as
 Let's check those 5 entries by using `head` 
 
 ```bash
-head chr_aspergillus_assemblies.txt
+$ head chr_aspergillus_assemblies.txt
 ```
 
 I want to get the ftp address to download those files.
@@ -304,7 +304,7 @@ done <ftp-ids.txt
 Now check what files you downloaded:
 
 ```bash
-ls -lth genomes/
+$ ls -lth genomes/
 ```
 
 	total 77M
@@ -327,7 +327,7 @@ Most files in bioinformatics are compressed to allow fast sharing, otherwise the
 We can try that with a loop
 
 ```bash
-cd genomes
+$ cd genomes
 ```
 
 ```bash
@@ -389,7 +389,7 @@ done
 Ok try the loop with `gff` but first:
 
 ```bash
-cd ..
+$ cd ..
 ```
  Then:
 
@@ -403,7 +403,7 @@ done <ftp-ids.txt
 Let's see what we got:
 
 ```bash
-ls -lth annotations/
+$ ls -lth annotations/
 ```
 
 	total 3.0M
@@ -415,7 +415,7 @@ ls -lth annotations/
 
 Uncompress:
 ```bash
-cd annotations
+$ cd annotations
 ```
 
 and finally
@@ -431,7 +431,7 @@ done
 Check what you got: 
 
 ```bash
-ls -lth
+$ ls -lth
 ```
 
 You should have 5 files. If you have more or less, then you did something wrong!

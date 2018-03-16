@@ -11,9 +11,9 @@ so:
 First let's move to our `afternoon` folder and create a folder called `scripts` and `cd` to `scripts`
 
 ```bash
-cd /scratch/asecas86/afternoon
-mkdir scripts
-cd scripts
+$ cd /scratch/asecas86/afternoon
+$ mkdir scripts
+$ cd scripts
 ```
 
 Then let's type the following: 
@@ -21,7 +21,7 @@ You already learned how to use `nano`. Let's practice.
 
 
 ```bash
- nano myfirstscript.txt 
+$ nano myfirstscript.txt 
 ```
 
 	[asecas86@n252 scripts]$  nano myfirstscript.txt
@@ -106,7 +106,7 @@ The easiest way to create a `bash` script with `input` `output` feature is by ad
 For example, one of the scripts that we previously used to linearize `fasta` contained one `argument`.
 
 ```bash
-$bash linearize.sh genome.fasta
+$ bash linearize.sh genome.fasta
 ```
 The `genome.fasta` was the argument at that moment. 
 
