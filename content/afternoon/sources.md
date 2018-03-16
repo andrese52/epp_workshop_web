@@ -1,8 +1,8 @@
 ---
 title: Sources afternoon
-weight: 5
+weight: 6
 chapter: false
-pre: "<b>3.5 </b>"
+pre: "<b>3.6 </b>"
 ---
 
 Most of the code that was presented to you during the afternoon session was developed or adapted by Andres. However, some commands (no modification) were obtained from the following sources:

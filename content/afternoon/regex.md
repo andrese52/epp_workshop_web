@@ -167,204 +167,103 @@ sort -n read_dist_GCA_002443195.1_AflaGuard_genomic.fna | head -n 1
 sort -n read_dist_GCA_000006275.2_JCVI-afl1-v2.0_genomic.fna | head -n 1
 ```
 
+
 > #### Task 4
 > Obtain the largest contig length on both genomes 
 
-
-Very helpful command to separate columns. Similar to excel.
-
-Extract fields 2, 4, and 5 from file.txt:
-
-    awk '{print $2,$4,$5}' input.txt
-
-
-Print each line where the 5th field is equal to ‘abc123’:
-
-    awk '$5 == "abc123"' file.txt
-
-
-Print each line where the 5th field is *not* equal to ‘abc123’:
-
-    awk '$5 != "abc123"' file.txt
-
-
-Print each line whose 7th field matches the regular expression:
-
-    awk '$7  ~ /^[a-f]/' file.txt
-
-
-Print each line whose 7th field *does not* match the regular expression:
-
-    awk '$7 !~ /^[a-f]/' file.txt
-
-
-Get unique entries in file.txt based on column 2 (takes only the first instance):
-
-    awk '!arr[$2]++' file.txt
-
-
-Print rows where column 3 is larger than column 5 in file.txt:
-
-    awk '$3>$5' file.txt
-
-
-Sum column 1 of file.txt:
-
-    awk '{sum+=$1} END {print sum}' file.txt
-
-
-Compute the mean of column 2:
-
-    awk '{x+=$2}END{print x/NR}' file.txt
-
-	
-	
-Keep only top bit scores in blast hits (best bit score only):
-
-    awk '{ if(!x[$1]++) {print $0; bitscore=($14-1)} else { if($14>bitscore) print $0} }' blastout.txt
-
-
-Keep only top bit scores in blast hits (5 less than the top):
-
-    awk '{ if(!x[$1]++) {print $0; bitscore=($14-6)} else { if($14>bitscore) print $0} }' blastout.txt
-
-
-Split a multi-FASTA file into individual FASTA files:
-
-    awk '/^>/{s=++d".fa"} {print > s}' multi.fa
-
-Output sequence name and its length for every sequence within a fasta file:
-
-    cat file.fa | awk '$0 ~ ">" {print c; c=0;printf substr($0,2,100) "\t"; } $0 !~ ">" {c+=length($0);} END { print c; }'
-	
-	
-
-Print everything except the first line
-
-    awk 'NR>1' input.txt
-
-Print rows 20-80:
-
-    awk 'NR>=20&&NR<=80' input.txt
-
-Calculate the sum of column 2 and 3 and put it at the end of a row:
-
-    awk '{print $0,$2+$3}' input.txt
-
-Calculate the mean length of reads in a fastq file:
-
-    awk 'NR%4==2{sum+=length($0)}END{print sum/(NR/4)}' input.fastq	
-	
-And this is the best of the best. For the end: Changing the headers of multiple fasta files based on their naming prefix<sup>[ref.](https://www.biostars.org/p/237163/#237167)</sup>. I use this in a regular basis after I have done multiple modifications to fasta files. 
-
-```bash
- ls *probes.fasta | cut -d "-" -f 1 | while read PREFIX; do awk -v P=${PREFIX} '/^>/{print ">" P "_" ++i; next}{print}' ${PREFIX}-probes.fasta > ${PREFIX}-probes-new.fasta ; done
- ```
-
-## Basic SED
+## Annotation files and `awk`
 
 [[back to top](#contents)]
 
 
-	
-Replace all occurances of `foo` with `bar` in file.txt:
-
-    sed 's/foo/bar/g' file.txt
+Annotation files of these genomes contain information about the genes that the nucleotides encode. We will be doing some basic filtering with `awk` to find genes of interest.
 
 
-Trim leading whitespaces and tabulations in file.txt:
+First let's move to the `annotations` directory
 
-    sed 's/^[ \t]*//' file.txt
-
-
-Trim trailing whitespaces and tabulations in file.txt:
-
-    sed 's/[ \t]*$//' file.txt
-
-
-Trim leading and trailing whitespaces and tabulations in file.txt:
-
-    sed 's/^[ \t]*//;s/[ \t]*$//' file.txt
-
-
-Delete blank lines in file.txt:
-
-    sed '/^$/d' file.txt
-
-
-Delete everything after and including a line containing `EndOfUsefulData`:
-
-    sed -n '/EndOfUsefulData/,$!p' file.txt
-
-Convert a FASTQ file to FASTA:
-
-    sed -n '1~4s/^@/>/p;2~4p' file.fq > file.fa
-
-Extract every 4th line starting at the second line (extract the sequence from FASTQ file):
-
-    sed -n '2~4p' file.fq
-	
-Remove spaces in fasta headers: this one-liner removes spaces and re-writes the file
-
-	sed 's, ,_,g' -i FILENAME.FASTA
-	
-Now, let's try by eliminating the `-i`
 
 ```bash
-sed 's, ,_,g' FILENAME.FASTA
+cd ../annotations
+```
+
+**We will be working on the annotations of the same two genomes that we used for counting the length of each scaffold.**
+
+Important information about `gff` files can be found online [here](https://uswest.ensembl.org/info/website/upload/gff.html)
+
+What is most important about these files is that they usually have 9 columns.
+
+
+Position index	| Position name	| Description
+--------|------|------
+1	| sequence	| The name of the sequence where the feature is located.
+2	|source	|Keyword identifying the source of the feature, like a program (e.g. Augustus or RepeatMasker) or an organization (like TAIR).
+3	|feature	|The feature type name, like "gene" or "exon". In a well structured GFF file, all the children features always follow their parents in a single block (so all exons of a transcript are put after their parent "transcript" feature line and before any other parent transcript line). In GFF3, all features and their relationships should be compatible with the standards released by the Sequence Ontology Project.
+4	|start	|Genomic start of the feature, with a 1-base offset. This is in contrast with other 0-offset half-open sequence formats, like BED files.
+5	|end|	Genomic end of the feature, with a 1-base offset. This is the same end coordinate as it is in 0-offset half-open sequence formats, like BED files.[citation needed]
+6	|score|	Numeric value that generally indicates the confidence of the source on the annotated feature. A value of "." (a dot) is used to define a null value.
+7	|strand|	Single character that indicates the Sense (molecular biology) strand of the feature; it can assume the values of "+" (positive, or 5'->3'), "-", (negative, or 3'->5'), "." (undetermined).
+8	|frame| (GTF, GFF2) or phase (GFF3)	Frame or phase of CDS features; it can be either one of 0, 1, 2 (for CDS features) or "." (for everything else). Frame and Phase are not the same, See following subsection.
+9	|Attributes|	All the other information pertaining to this feature. The format, structure and content of this field is the one which varies the most between the three competing file formats
+
+
+It would be good if we first explore the header:
+
+```bash
+head -n 5 GCA_000006275.2_JCVI-afl1-v2.0_genomic.gff
+```
+
+The header contains a lot of information about generalities of the annotation and the genome itself. We must skip these first lines. They are usually not tab-delimited.
+
+The best way to do it is just by targetting lines of interest, for example I am interested in aflatoxin genes. Therefore I will `grep` the file for the pattern `aflatoxin`.
+
+```bash
+grep -i "aflatoxin" GCA_000006275.2_JCVI-afl1-v2.0_genomic.gff
+```
+
+Since I am interested only on those genes I will redirect the output. 
+
+
+```bash
+grep -i "aflatoxin" GCA_000006275.2_JCVI-afl1-v2.0_genomic.gff > aflatoxin_genes.gff
 ```
 
 
-## sort, uniq, cut, etc.
-
-[[back to top](#contents)]
-
-Number each line in file.txt:
-
-    cat -n file.txt
-
-Count the number of unique lines in file.txt
-
-    cat file.txt | sort -u | wc -l
+Now let's analyze by column. Usually the word `aflatoxin` should be found in the `Attributes` column which is column 9. So I can also get those same lines by doing this: 
 
 
-Find lines shared by 2 files (assumes lines within file1 and file2 are unique; pipe to `wd -l` to count the _number_ of lines shared):
 
-    sort file1 file2 | uniq -d
+Print each line where the 9th field is similar to `aflatoxin`:
+```bash
+    awk -F "\t" '$9 ~ "aflatoxin"' GCA_000006275.2_JCVI-afl1-v2.0_genomic.gff
+```
 
-    # Safer
-    sort -u file1 > a
-    sort -u file2 > b
-    sort a b | uniq -d
-
-    # Use comm
-    comm -12 file1 file2
+Now let's check the difference between `grep` and `awk`
 
 
-Sort numerically (with logs) (g) by column (k) 9:
+```bash
+grep -i "aflatoxin" GCA_000006275.2_JCVI-afl1-v2.0_genomic.gff | wc -l
+awk -F "\t" '$9 ~ "aflatoxin"' GCA_000006275.2_JCVI-afl1-v2.0_genomic.gff | wc -l
+```
 
-    sort -gk9 file.txt
+We must get the same result for both which is 107 entries. 
 
-
-Find the most common strings in column 2:
-
-    cut -f2 file.txt | sort | uniq -c | sort -k1nr | head
-
-
-Pick 10 random lines from a file:
-
-    shuf file.txt | head -n 10
+We have already redirected the aflatoxin annotations to a separate file. Now let's play with that file. 
 
 
-Print all possible 3mer DNA sequence combinations:
+We can get all the positive sense `CDS` and count them
 
-    echo {A,C,T,G}{A,C,T,G}{A,C,T,G}
+```bash
+awk -F "\t" '$7 == "+"' aflatoxin_genes.gff | wc -l
+```
 
+	45
 	
-## GFF3 Annotations
+> #### Task 5
+> Count the number of `CDS` in the aflatoxin annotation file
 
-[[back to top](#contents)]
 
+
+## Extras with `gff` files
 
 Print all sequences annotated in a GFF3 file.
 
@@ -381,8 +280,5 @@ Determine the number of genes annotated in a GFF3 file.
     grep -c $'\tgene\t' yourannots.gff3
 
 
-Extract all gene IDs from a GFF3 file.
-
-    grep $'\tgene\t' yourannots.gff3 | perl -ne '/ID=([^;]+)/ and printf("%s\n", $1)'
 
 
