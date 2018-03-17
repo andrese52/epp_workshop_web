@@ -9,7 +9,7 @@
 
     <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
-    <title>Resources for new users :: Introduction to Programming for beginners</title>
+    <title>Answers! :: Introduction to Programming for beginners</title>
     
     
     <link href="/css/nucleus.css?1521260247" rel="stylesheet">
@@ -65,7 +65,7 @@ h1 {
 
 
   </head>
-  <body class="" data-url="/morning/links/">
+  <body class="" data-url="/morning/answers/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -161,7 +161,7 @@ h1 {
  
   
     
-      <li data-nav-id="/morning/links/" title="Resources for new users" class="dd-item active">
+      <li data-nav-id="/morning/links/" title="Resources for new users" class="dd-item ">
         <a href="/morning/links/">
         <b>2.1 </b>Resources for new users
         <i class="fa fa-check read-icon"></i>
@@ -237,7 +237,7 @@ h1 {
  
   
     
-      <li data-nav-id="/morning/answers/" title="Answers!" class="dd-item ">
+      <li data-nav-id="/morning/answers/" title="Answers!" class="dd-item active">
         <a href="/morning/answers/">
         <b>2.5 </b>Answers!
         <i class="fa fa-check read-icon"></i>
@@ -498,7 +498,7 @@ h1 {
                   
                   
                   <div id="top-github-link">
-                    <a class="github-link" title='Edit this page' href="https://github.com/matcornic/hugo-theme-learn/edit/master/exampleSite/content/morning/links.md" target="blank">
+                    <a class="github-link" title='Edit this page' href="https://github.com/matcornic/hugo-theme-learn/edit/master/exampleSite/content/morning/answers.md" target="blank">
                       <i class="fa fa-code-fork"></i>
                       <span id="top-github-link-text">Edit this page</span>
                     </a>
@@ -527,7 +527,7 @@ h1 {
             
           
           
-            <a href='/'>Introduction to Programming for beginners</a> > <a href='/morning/'>Morning Session</a> > Resources for new users
+            <a href='/'>Introduction to Programming for beginners</a> > <a href='/morning/'>Morning Session</a> > Answers!
           
          
           
@@ -539,7 +539,17 @@ h1 {
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#the-answers">The answers</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
     </div>
 </div>
 
@@ -551,31 +561,144 @@ h1 {
         
         <div id="body-inner">
           
-            <h1>Resources for new users</h1>
+            <h1>Answers!</h1>
           
 
         
 
 
-<p>There are so many resources available for free online! Here, I am sharing the websites that were very useful for me when I was starting out:</p>
 
-<p>HPCC new user tutorial: <a href="https://hpcc.okstate.edu/sites/default/files/Files/tutorial.pdf">https://hpcc.okstate.edu/sites/default/files/Files/tutorial.pdf</a></p>
 
-<p>HPCC Education Resources: <a href="https://hpcc.okstate.edu/content/hpc-education-resources">https://hpcc.okstate.edu/content/hpc-education-resources</a></p>
+<h3 id="the-answers">The answers</h3>
 
-<p>Data Carpentry website <a href="http://www.datacarpentry.org">http://www.datacarpentry.org</a></p>
+<p>Here you&rsquo;ll find the answers to the challenges in <a href="./unix_essentials">2.4 Unix essentials</a></p>
 
-<p>OSU offers Data Carpentry Workshops every semester (they are free, go take them whenever you can!)</p>
+<ul>
+<li><strong>Pipes:</strong></li>
+</ul>
 
-<p>DataCamp shell: <a href="https://www.learnshell.org">https://www.learnshell.org</a></p>
+<p>How many times <code>ORF|Uncharacterized</code> appears on the 2nd column?</p>
 
-<p>Unix for begginers: <a href="http://www.ee.surrey.ac.uk/Teaching/Unix/">http://www.ee.surrey.ac.uk/Teaching/Unix/</a></p>
+<pre><code class="language-bash">$ cat output_A_nidulans_filtered_features.txt | sed '1,8d' | cut -f 2 | grep -c 'ORF|Uncharacterized'
+9312
+</code></pre>
 
-<p>Unix cheat sheet: <a href="https://files.fosswire.com/2007/08/fwunixref.pdf">https://files.fosswire.com/2007/08/fwunixref.pdf</a></p>
+<p>How many times <code>pseudogene</code> appears on the 2nd column?</p>
 
-<p>&lsquo;Awk&rsquo; cheat sheet for fasta manipulation: <a href="https://www.cheatography.com/melissamlwong/cheat-sheets/awk-one-liners-for-fasta-manipulation-version-1-0/">https://www.cheatography.com/melissamlwong/cheat-sheets/awk-one-liners-for-fasta-manipulation-version-1-0/</a></p>
+<pre><code class="language-bash">$ cat output_A_nidulans_filtered_features.txt | sed '1,8d' | cut -f 2 | grep -c 'pseudogene'
+58
+</code></pre>
 
-<p>BioStar forum: <a href="https://www.biostars.org">https://www.biostars.org</a></p>
+<p>Does the 1st column list each gene name (those named &lsquo;AN###&rsquo;) only once?</p>
+
+<pre><code class="language-bash">$ cat A_nidulans_FGSC_A4_current_chromosomal_feature.tab | sed '1,8d' | cut -f 1 | grep 'AN' -c
+10779
+$ cat A_nidulans_FGSC_A4_current_chromosomal_feature.tab | sed '1,8d' | cut -f -1 | sort | uniq | grep 'AN' -c
+10779
+</code></pre>
+
+<blockquote>
+<p>Why a single and straight &lsquo;wc -l &rsquo; won&rsquo;t work?<br />
+Did you tail? There are genes that do not start with &lsquo;AN&rsquo;.</p>
+</blockquote>
+
+<p>Which word appears 199 times on the 2nd column?</p>
+
+<pre><code class="language-bash">$ cat output_A_nidulans_filtered_features.txt | sed '1,8d' | cut -f 2 | sort | uniq -c
+ 189 ORF|Merged/Split|Uncharacterized
+   4 ORF|Merged/Split|Verified
+9235 ORF|Uncharacterized
+   1 ORF|Uncharacterized|Merged/Split
+  49 ORF|Uncharacterized|transposable element gene
+1209 ORF|Verified
+   1 multigene locus
+   1 ncRNA|Uncharacterized
+   1 ncRNA|Verified
+  55 pseudogene
+   2 pseudogene|Verified
+   1 pseudogene|transposable element gene
+   2 rRNA|Uncharacterized
+ 199 tRNA|Uncharacterized
+   9 tRNA|Verified
+  27 uORF|Uncharacterized
+   4 uORF|Verified
+</code></pre>
+
+<p>It&rsquo;s tRNA|Uncharacterized.</p>
+
+<ul>
+<li><strong>For loop</strong>:</li>
+</ul>
+
+<p>Download <em>A. flavus</em> genome, <em>and unzip it</em>.</p>
+
+<pre><code class="language-bash">$ curl -O http://www.aspergillusgenome.org/download/sequence/A_flavus_NRRL_3357/current/A_flavus_NRRL_3357_chromosomes.fasta.gz
+A_flavus_NRRL_3357_chromosomes.fasta.gz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 10.9M  100 10.9M    0     0  6618k      0  0:00:01  0:00:01 --:--:-- 6616k
+</code></pre>
+
+<pre><code class="language-bash">$ gunzip A_flavus_NRRL_3357_chromosomes.fasta.gz
+$ ls *flavus*
+A_flavus_NRRL_3357_chromosomes.fasta
+</code></pre>
+
+<p>Then, ultimately I want you to create a for loop that will execute the following on both <em>Asperillus</em> genomes:</p>
+
+<ol>
+<li>Print the file name.<br /></li>
+<li>Print the number of fasta sequences followed by the word &lsquo;sequences&rsquo;.<br /></li>
+<li>Print all the fasta headers.<br /></li>
+</ol>
+
+<pre><code class="language-bash">$ for file in A_*.fasta; do echo $file; a=`grep -c '&gt;' $file`; echo $a sequences; echo ; grep '&gt;' $file; echo; done
+A_flavus_NRRL_3357_chromosomes.fasta
+126 sequences
+
+&gt;1041045516887_A_flavus_NRRL_3357 (3491 nucleotides)
+&gt;1041045516889_A_flavus_NRRL_3357 (4170 nucleotides)
+&gt;1041045516890_A_flavus_NRRL_3357 (20049 nucleotides)
+&gt;1041045516891_A_flavus_NRRL_3357 (2076547 nucleotides)
+&gt;1041045516892_A_flavus_NRRL_3357 (3256 nucleotides)
+&gt;1041045516893_A_flavus_NRRL_3357 (2183 nucleotides)
+&gt;1041045516894_A_flavus_NRRL_3357 (2614 nucleotides)
+&gt;1041045516895_A_flavus_NRRL_3357 (2135 nucleotides)
+&gt;1041045516896_A_flavus_NRRL_3357 (2529 nucleotides)
+&gt;1041045516897_A_flavus_NRRL_3357 (2052 nucleotides)
+&gt;1041045516898_A_flavus_NRRL_3357 (2187 nucleotides)
+&gt;1041045516899_A_flavus_NRRL_3357 (2177 nucleotides)
+&gt;1041045516900_A_flavus_NRRL_3357 (2275 nucleotides)
+&gt;1041045516901_A_flavus_NRRL_3357 (2401 nucleotides)
+&gt;1041045516902_A_flavus_NRRL_3357 (2719 nucleotides)
+(...) 
+
+A_nidulans_FGSC_A4_current_chromosomes.fasta
+9 sequences
+
+&gt;ChrIII_A_nidulans_FGSC_A4 (3470897 nucleotides)
+&gt;ChrII_A_nidulans_FGSC_A4 (4070060 nucleotides)
+&gt;ChrIV_A_nidulans_FGSC_A4 (2887738 nucleotides)
+&gt;ChrI_A_nidulans_FGSC_A4 (3759208 nucleotides)
+&gt;ChrVIII_A_nidulans_FGSC_A4 (4934093 nucleotides)
+&gt;ChrVII_A_nidulans_FGSC_A4 (4550218 nucleotides)
+&gt;ChrVI_A_nidulans_FGSC_A4 (3407944 nucleotides)
+&gt;ChrV_A_nidulans_FGSC_A4 (3403833 nucleotides)
+&gt;mito_A_nidulans_FGSC_A4 (33227 nucleotides)
+</code></pre>
+
+<p><strong>BONUS</strong></p>
+
+<p>Redirect output of a for loop:</p>
+
+<pre><code class="language-bash">$ for file in A_*.fasta; do echo $file ; a=`grep -c '&gt;' $file`; echo $a sequences; echo ; grep '&gt;' $file; echo ; done &gt; output_genomes_fasta_headers.txt
+$ ls output*.txt
+output_A_nidulans_fasta_headers.txt
+output_A_nidulans_filtered_features.txt
+output_genomes_fasta_headers.txt
+$ cat output_genomes_fasta_headers.txt
+(...)
+</code></pre>
 
 
 <footer class=" footline" >
@@ -647,23 +770,6 @@ h1 {
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
                         
                         
                     
@@ -726,26 +832,11 @@ h1 {
             
         
                     
-            
-        
-                    
                         
             
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -757,6 +848,25 @@ h1 {
                     
             
         
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
                     
                         
             
@@ -838,6 +948,22 @@ h1 {
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -864,10 +990,10 @@ h1 {
 
 
         
-            <a class="nav nav-prev" href="/morning/" title="Morning Session"> <i class="fa fa-chevron-left"></i></a>
+            <a class="nav nav-prev" href="/morning/unix_essentials/" title="Unix essentials"> <i class="fa fa-chevron-left"></i></a>
         
         
-            <a class="nav nav-next" href="/morning/cowboy/" title="Introduction to the Cowboy" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+            <a class="nav nav-next" href="/afternoon/" title="Afternoon Session" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 

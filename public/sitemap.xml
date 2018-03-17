@@ -16,6 +16,10 @@
   </url>
   
   <url>
+    <loc>https://bioinformatics.netlify.com/afternoon/data_acquisition/</loc>
+  </url>
+  
+  <url>
     <loc>https://bioinformatics.netlify.com/morning/cowboy/</loc>
   </url>
   
@@ -24,15 +28,11 @@
   </url>
   
   <url>
-    <loc>https://bioinformatics.netlify.com/afternoon/regex/</loc>
-  </url>
-  
-  <url>
     <loc>https://bioinformatics.netlify.com/afternoon/</loc>
   </url>
   
   <url>
-    <loc>https://bioinformatics.netlify.com/afternoon/data_acquisition/</loc>
+    <loc>https://bioinformatics.netlify.com/afternoon/regex/</loc>
   </url>
   
   <url>
@@ -50,6 +50,14 @@
   <url>
     <loc>https://bioinformatics.netlify.com/</loc>
     <lastmod>2018-03-03T16:33:35-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bioinformatics.netlify.com/morning/answers/</loc>
+  </url>
+  
+  <url>
+    <loc>https://bioinformatics.netlify.com/afternoon/versions_git/</loc>
   </url>
   
   <url>

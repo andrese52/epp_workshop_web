@@ -9,7 +9,7 @@
 
     <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
-    <title>Resources for new users :: Introduction to Programming for beginners</title>
+    <title>Version with with git :: Introduction to Programming for beginners</title>
     
     
     <link href="/css/nucleus.css?1521260247" rel="stylesheet">
@@ -65,7 +65,7 @@ h1 {
 
 
   </head>
-  <body class="" data-url="/morning/links/">
+  <body class="" data-url="/afternoon/versions_git/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -135,7 +135,7 @@ h1 {
   
     
     <li data-nav-id="/morning/" title="Morning Session" class="dd-item 
-        parent
+        
         
         
         ">
@@ -161,7 +161,7 @@ h1 {
  
   
     
-      <li data-nav-id="/morning/links/" title="Resources for new users" class="dd-item active">
+      <li data-nav-id="/morning/links/" title="Resources for new users" class="dd-item ">
         <a href="/morning/links/">
         <b>2.1 </b>Resources for new users
         <i class="fa fa-check read-icon"></i>
@@ -264,7 +264,7 @@ h1 {
   
     
     <li data-nav-id="/afternoon/" title="Afternoon Session" class="dd-item 
-        
+        parent
         
         
         ">
@@ -366,7 +366,7 @@ h1 {
  
   
     
-      <li data-nav-id="/afternoon/versions_git/" title="Version with with git" class="dd-item ">
+      <li data-nav-id="/afternoon/versions_git/" title="Version with with git" class="dd-item active">
         <a href="/afternoon/versions_git/">
         <b>3.5 </b>Version with with git
         <i class="fa fa-check read-icon"></i>
@@ -498,7 +498,7 @@ h1 {
                   
                   
                   <div id="top-github-link">
-                    <a class="github-link" title='Edit this page' href="https://github.com/matcornic/hugo-theme-learn/edit/master/exampleSite/content/morning/links.md" target="blank">
+                    <a class="github-link" title='Edit this page' href="https://github.com/matcornic/hugo-theme-learn/edit/master/exampleSite/content/afternoon/versions_git.md" target="blank">
                       <i class="fa fa-code-fork"></i>
                       <span id="top-github-link-text">Edit this page</span>
                     </a>
@@ -527,7 +527,7 @@ h1 {
             
           
           
-            <a href='/'>Introduction to Programming for beginners</a> > <a href='/morning/'>Morning Session</a> > Resources for new users
+            <a href='/'>Introduction to Programming for beginners</a> > <a href='/afternoon/'>Afternoon Session</a> > Version with with git
           
          
           
@@ -551,31 +551,77 @@ h1 {
         
         <div id="body-inner">
           
-            <h1>Resources for new users</h1>
+            <h1>Version with with git</h1>
           
 
         
 
 
-<p>There are so many resources available for free online! Here, I am sharing the websites that were very useful for me when I was starting out:</p>
+<p>Probably you have heard about  <a href="https://github.com/">Github</a> and how bioinformaticians are using it too keep their developments up to date. It is an extraordinary tool for keep track of all your script changes and versions. It just requires a little bit of training to <strong>SUCCEED</strong>.</p>
 
-<p>HPCC new user tutorial: <a href="https://hpcc.okstate.edu/sites/default/files/Files/tutorial.pdf">https://hpcc.okstate.edu/sites/default/files/Files/tutorial.pdf</a></p>
 
-<p>HPCC Education Resources: <a href="https://hpcc.okstate.edu/content/hpc-education-resources">https://hpcc.okstate.edu/content/hpc-education-resources</a></p>
+<figure>
+    
+        <img src="https://thumbs.gfycat.com/GargantuanSimilarCoypu-size_restricted.gif" />
+    
+    
+</figure>
 
-<p>Data Carpentry website <a href="http://www.datacarpentry.org">http://www.datacarpentry.org</a></p>
 
-<p>OSU offers Data Carpentry Workshops every semester (they are free, go take them whenever you can!)</p>
+<p>First let&rsquo;s create a folder inside scripts:</p>
 
-<p>DataCamp shell: <a href="https://www.learnshell.org">https://www.learnshell.org</a></p>
+<pre><code class="language-bash">mkdir my_git_script
+cd my_git_script
+mv ../myfirstscript.sh .
+</code></pre>
 
-<p>Unix for begginers: <a href="http://www.ee.surrey.ac.uk/Teaching/Unix/">http://www.ee.surrey.ac.uk/Teaching/Unix/</a></p>
+<p>Create a new repository</p>
 
-<p>Unix cheat sheet: <a href="https://files.fosswire.com/2007/08/fwunixref.pdf">https://files.fosswire.com/2007/08/fwunixref.pdf</a></p>
+<pre><code class="language-bash">git init
+</code></pre>
 
-<p>&lsquo;Awk&rsquo; cheat sheet for fasta manipulation: <a href="https://www.cheatography.com/melissamlwong/cheat-sheets/awk-one-liners-for-fasta-manipulation-version-1-0/">https://www.cheatography.com/melissamlwong/cheat-sheets/awk-one-liners-for-fasta-manipulation-version-1-0/</a></p>
+<p>First you have to configure your global <code>git</code> parameters</p>
 
-<p>BioStar forum: <a href="https://www.biostars.org">https://www.biostars.org</a></p>
+<pre><code class="language-bash">git config --global user.name &quot;username&quot;
+</code></pre>
+
+<p>You have initiated a new repository</p>
+
+<p>a hidden folder called <code>.git</code> has been created</p>
+
+<pre><code class="language-bash">ls -ltha
+</code></pre>
+
+<pre><code>total 256K
+drwxr-xr-x 7 asecas86 clusterusers 4.0K Mar 16 01:11 .git
+drwxr-xr-x 3 asecas86 clusterusers 4.0K Mar 16 01:11 .
+drwxr-xr-x 3 asecas86 clusterusers 4.0K Mar 16 01:11 ..
+-rwxr-xr-x 1 asecas86 clusterusers  101 Mar 16 01:10 myfirstscript.sh
+</code></pre>
+
+<pre><code class="language-bash">git add *
+</code></pre>
+
+<p>Adds all the changes in your directory to the local git cache</p>
+
+<pre><code class="language-bash">git status
+</code></pre>
+
+<p>Shows all the changes you have done in your directory</p>
+
+<pre><code>[asecas86@n252 my_git_script]$ git status
+# On branch master
+#
+# Initial commit
+#
+# Changes to be committed:
+#   (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)
+#
+#       new file:   myfirstscript.sh
+</code></pre>
+
+<pre><code class="language-bash">git commit -m &quot;My first commit&quot;
+</code></pre>
 
 
 <footer class=" footline" >
@@ -633,7 +679,6 @@ h1 {
             
                 
                     
-                    
                 
                 
 
@@ -641,122 +686,6 @@ h1 {
                     
                     
 
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
                     
                         
             
@@ -846,6 +775,126 @@ h1 {
             
                 
                     
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
                 
                 
 
@@ -864,10 +913,10 @@ h1 {
 
 
         
-            <a class="nav nav-prev" href="/morning/" title="Morning Session"> <i class="fa fa-chevron-left"></i></a>
+            <a class="nav nav-prev" href="/afternoon/my_first_script/" title="My first bash script"> <i class="fa fa-chevron-left"></i></a>
         
         
-            <a class="nav nav-next" href="/morning/cowboy/" title="Introduction to the Cowboy" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+            <a class="nav nav-next" href="/afternoon/sources/" title="Sources afternoon" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 

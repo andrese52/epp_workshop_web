@@ -3,11 +3,11 @@ title: Credits
 disableToc: true
 ---
 
-## Contributors
+## Contributors 
 
-Thanks to them <i class="fa fa-heart"></i> for taking the time to teach bioinformatics.
+Thanks to them <i class="fa fa-heart"></i> for taking the time to teach bioinformatics. You can check the project's github page by [clicking here](https://github.com/andrese52/epp_workshop_web/graphs/contributors)
 
-{{% ghcontributors "https://api.github.com/repos/andrese52/epp_workshop_web/stats/contributors" %}}
+{{% ghcontributors "https://api.github.com/repos/andrese52/epp_workshop_web/stats/contributors"%}}
 
 
 

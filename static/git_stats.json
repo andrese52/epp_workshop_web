@@ -1,0 +1,86 @@
+[
+  {
+    "total": 33,
+    "weeks": [
+      {
+        "w": 1519516800,
+        "a": 0,
+        "d": 0,
+        "c": 0
+      },
+      {
+        "w": 1520121600,
+        "a": 1226,
+        "d": 335,
+        "c": 25
+      },
+      {
+        "w": 1520726400,
+        "a": 381,
+        "d": 38,
+        "c": 8
+      }
+    ],
+    "author": {
+      "login": "ngrafgr",
+      "id": 14948129,
+      "avatar_url": "https://avatars0.githubusercontent.com/u/14948129?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/ngrafgr",
+      "html_url": "https://github.com/ngrafgr",
+      "followers_url": "https://api.github.com/users/ngrafgr/followers",
+      "following_url": "https://api.github.com/users/ngrafgr/following{/other_user}",
+      "gists_url": "https://api.github.com/users/ngrafgr/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/ngrafgr/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/ngrafgr/subscriptions",
+      "organizations_url": "https://api.github.com/users/ngrafgr/orgs",
+      "repos_url": "https://api.github.com/users/ngrafgr/repos",
+      "events_url": "https://api.github.com/users/ngrafgr/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/ngrafgr/received_events",
+      "type": "User",
+      "site_admin": false
+    }
+  },
+  {
+    "total": 42,
+    "weeks": [
+      {
+        "w": 1519516800,
+        "a": 15,
+        "d": 0,
+        "c": 1
+      },
+      {
+        "w": 1520121600,
+        "a": 5520,
+        "d": 4546,
+        "c": 13
+      },
+      {
+        "w": 1520726400,
+        "a": 28903,
+        "d": 1124,
+        "c": 28
+      }
+    ],
+    "author": {
+      "login": "andrese52",
+      "id": 2184269,
+      "avatar_url": "https://avatars3.githubusercontent.com/u/2184269?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/andrese52",
+      "html_url": "https://github.com/andrese52",
+      "followers_url": "https://api.github.com/users/andrese52/followers",
+      "following_url": "https://api.github.com/users/andrese52/following{/other_user}",
+      "gists_url": "https://api.github.com/users/andrese52/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/andrese52/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/andrese52/subscriptions",
+      "organizations_url": "https://api.github.com/users/andrese52/orgs",
+      "repos_url": "https://api.github.com/users/andrese52/repos",
+      "events_url": "https://api.github.com/users/andrese52/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/andrese52/received_events",
+      "type": "User",
+      "site_admin": false
+    }
+  }
+]

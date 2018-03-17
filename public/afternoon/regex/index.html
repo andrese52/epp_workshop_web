@@ -12,19 +12,19 @@
     <title>Regular expressions :: Introduction to Programming for beginners</title>
     
     
-    <link href="/css/nucleus.css?1520956824" rel="stylesheet">
-    <link href="/css/font-awesome.min.css?1520956824" rel="stylesheet">
-    <link href="/css/hybrid.css?1520956824" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1520956824" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1520956824" rel="stylesheet">
-    <link href="/css/auto-complete.css?1520956824" rel="stylesheet">
-    <link href="/css/theme.css?1520956824" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1520956824" rel="stylesheet">
+    <link href="/css/nucleus.css?1521260247" rel="stylesheet">
+    <link href="/css/font-awesome.min.css?1521260247" rel="stylesheet">
+    <link href="/css/hybrid.css?1521260247" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1521260247" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1521260247" rel="stylesheet">
+    <link href="/css/auto-complete.css?1521260247" rel="stylesheet">
+    <link href="/css/theme.css?1521260247" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1521260247" rel="stylesheet">
     
-      <link href="/css/theme-mine.css?1520956824" rel="stylesheet">
+      <link href="/css/theme-mine.css?1521260247" rel="stylesheet">
     
 
-    <script src="/js/jquery-2.x.min.js?1520956824"></script>
+    <script src="/js/jquery-2.x.min.js?1521260247"></script>
     
     <style type="text/css">
       :root #header + #content > #left > #rlblock_left{ 
@@ -87,14 +87,14 @@ h1 {
     <span data-search-clear=""><i class="fa fa-close"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1520956824"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1520956824"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1521260247"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1521260247"></script>
 <script type="text/javascript">
     
         var baseurl = '\/';
     
 </script>
-<script type="text/javascript" src="/js/search.js?1520956824"></script>
+<script type="text/javascript" src="/js/search.js?1521260247"></script>
 
     
   </div>
@@ -230,6 +230,25 @@ h1 {
 
             
           
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/morning/answers/" title="Answers!" class="dd-item ">
+        <a href="/morning/answers/">
+        <b>2.5 </b>Answers!
+        <i class="fa fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
         
         </ul>
               
@@ -290,9 +309,9 @@ h1 {
  
   
     
-      <li data-nav-id="/afternoon/regex/" title="Regular expressions" class="dd-item active">
-        <a href="/afternoon/regex/">
-        <b>3.2 </b>Regular expressions
+      <li data-nav-id="/afternoon/data_acquisition/" title="Data Acquisition" class="dd-item ">
+        <a href="/afternoon/data_acquisition/">
+        <b>3.2 </b>Data Acquisition
         <i class="fa fa-check read-icon"></i>
         </a>
     </li>
@@ -309,9 +328,9 @@ h1 {
  
   
     
-      <li data-nav-id="/afternoon/data_acquisition/" title="Data Acquisition" class="dd-item ">
-        <a href="/afternoon/data_acquisition/">
-        <b>3.3 </b>Data Acquisition
+      <li data-nav-id="/afternoon/regex/" title="Regular expressions" class="dd-item active">
+        <a href="/afternoon/regex/">
+        <b>3.3 </b>Regular expressions
         <i class="fa fa-check read-icon"></i>
         </a>
     </li>
@@ -347,9 +366,28 @@ h1 {
  
   
     
+      <li data-nav-id="/afternoon/versions_git/" title="Version with with git" class="dd-item ">
+        <a href="/afternoon/versions_git/">
+        <b>3.5 </b>Version with with git
+        <i class="fa fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
       <li data-nav-id="/afternoon/sources/" title="Sources afternoon" class="dd-item ">
         <a href="/afternoon/sources/">
-        <b>3.5 </b>Sources afternoon
+        <b>3.6 </b>Sources afternoon
         <i class="fa fa-check read-icon"></i>
         </a>
     </li>
@@ -435,7 +473,8 @@ h1 {
     
     <a class="github-button" href="https://github.com/andrese52/epp_workshop_web/fork" data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork this website on GitHub">Fork</a>
 
-    <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fa fa-heart"></i></a> <a href="http://gohugo.io/">GoHugo</a></p>
+    <p>Copyright 2018</p>
+	<p> <a href="https://www.aespindola.com"><i class="fa fa-adn fa-lg"></i></a> <a href="https://www.aespindola.com"></a></p>
 </center>
 
 <script async defer src="https://buttons.github.io/buttons.js"></script>
@@ -505,11 +544,23 @@ h1 {
 <li>
 <ul>
 <li><a href="#contents">Contents</a></li>
-<li><a href="#basic-awk">Basic awk</a></li>
-<li><a href="#basic-sed">Basic SED</a></li>
-<li><a href="#pipes-with-awk">Pipes with AWK</a></li>
-<li><a href="#sort-uniq-cut-etc">sort, uniq, cut, etc.</a></li>
-<li><a href="#gff3-annotations">GFF3 Annotations</a></li>
+<li><a href="#intro">Intro</a></li>
+<li><a href="#basic-awk">Basic awk</a>
+<ul>
+<li><a href="#identifying-patterns-in-fasta-files-with-awk">Identifying patterns in <code>fasta</code> files with <code>awk</code></a>
+<ul>
+<li><a href="#task-3">Task 3</a></li>
+<li><a href="#task-4">Task 4</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#annotation-files-and-awk">Annotation files and <code>awk</code></a>
+<ul>
+<li>
+<ul>
+<li><a href="#task-5">Task 5</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#extras-with-gff-files">Extras with <code>gff</code> files</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -535,254 +586,328 @@ h1 {
 <h2 id="contents">Contents</h2>
 
 <ul>
-<li><a href="#basic-awk-sed">Basic awk</a></li>
-<li><a href="#basic-sed">Basic sed</a></li>
-<li><a href="#sort-uniq-cut-etc">sort, uniq, cut, etc.</a></li>
-<li><a href="#gff3-annotations">GFF3 Annotations</a></li>
-<li><a href="#other-generally-useful-aliases-for-your-bashrc">Other generally useful aliases for your .bashrc</a></li>
+<li><a href="#intro">Intro</a></li>
+<li><a href="#basic-awk">Basic <code>awk</code></a></li>
+<li><a href="#identifying-patterns-in-fasta-files-with-awk">Identifying patterns in fasta files with awk</a></li>
+<li><a href="#task-3">Task 3</a></li>
+<li><a href="#task-4">Task 4</a></li>
+<li><a href="#annotation-files-and-awk">Annotation files and awk</a></li>
+<li><a href="#task-5">Task 5</a></li>
+<li><a href="#extras-with-gff-files">Extras with <code>gff</code> files</a></li>
 </ul>
+
+<h2 id="intro">Intro</h2>
+
+<p>[<a href="#contents">back to top</a>]</p>
+
+<p>A regular expression, regex or regexp (sometimes called a rational expression) is, in theoretical computer science and formal language theory, a sequence of characters that define a search pattern. Usually this pattern is then used by string searching algorithms for &ldquo;find&rdquo; or &ldquo;find and replace&rdquo; operations on strings.</p>
+
+<p>Multiple tools in LINUX can be utilized to find regular expressions. The most common one is <code>grep</code> which you already used during the morning.</p>
+
+<p>Now there are a couple of more powerful tools that work with regular expressions, these are <code>awk</code> and <code>sed</code>.</p>
+
+<p>For example: the most basic <code>awk</code> command looks like this:</p>
+
+<pre><code class="language-bash">$ awk '/pattern/{ print $0 }' file
+</code></pre>
+
+<p>Let&rsquo;s move to one of our <code>afternoon</code> directories.</p>
+
+<pre><code class="language-bash">$ cd /scratch/asecas86/afternoon
+</code></pre>
 
 <h2 id="basic-awk">Basic awk</h2>
 
 <p>[<a href="#contents">back to top</a>]</p>
 
-<p>Very helpful command to separate columns. Similar to excel.</p>
+<p>We will be using basic <code>awk</code> with our <code>fna</code> and <code>gff</code> files. Lets start with <code>fna</code> files.</p>
 
-<p>Extract fields 2, 4, and 5 from file.txt:</p>
+<p>Let&rsquo;s move to <code>genomes</code></p>
 
-<pre><code>awk '{print $2,$4,$5}' input.txt
+<pre><code class="language-bash">$ cd genomes
 </code></pre>
 
-<p>Print each line where the 5th field is equal to ‘abc123’:</p>
+<p>Now select the following file: <code>GCA_002443195.1_AflaGuard_genomic.fna</code> and run the following command:</p>
 
-<pre><code>awk '$5 == &quot;abc123&quot;' file.txt
+<pre><code class="language-bash">$ awk '/NNNNN/{ print $0 }' GCA_002443195.1_AflaGuard_genomic.fna
 </code></pre>
 
-<p>Print each line where the 5th field is <em>not</em> equal to ‘abc123’:</p>
+<p>Pretty nasty output. We must linearize first the fasta files.  There is this very helpful script that linearizes any fasta file. Let&rsquo;s download it first.</p>
 
-<pre><code>awk '$5 != &quot;abc123&quot;' file.txt
+<pre><code class="language-bash">$ wget --no-check-certificate https://raw.githubusercontent.com/andrese52/Training_datasets_scripting/master/scripts/linearize.sh
 </code></pre>
 
-<p>Print each line whose 7th field matches the regular expression:</p>
+<p>Let&rsquo;s check how many lines <code>GCA_002443195.1_AflaGuard_genomic.fna</code> has prior linearizing it.</p>
 
-<pre><code>awk '$7  ~ /^[a-f]/' file.txt
+<pre><code class="language-bash">$ wc -l GCA_002443195.1_AflaGuard_genomic.fna
 </code></pre>
 
-<p>Print each line whose 7th field <em>does not</em> match the regular expression:</p>
-
-<pre><code>awk '$7 !~ /^[a-f]/' file.txt
+<pre><code>453747 GCA_002443195.1_AflaGuard_genomic.fna
 </code></pre>
 
-<p>Get unique entries in file.txt based on column 2 (takes only the first instance):</p>
+<p>Run the script as follows:</p>
 
-<pre><code>awk '!arr[$2]++' file.txt
+<pre><code class="language-bash">$ bash linearize.sh GCA_002443195.1_AflaGuard_genomic.fna
 </code></pre>
 
-<p>Print rows where column 3 is larger than column 5 in file.txt:</p>
+<p>This script manipulates the fasta file and just reformats it to have the following format:</p>
 
-<pre><code>awk '$3&gt;$5' file.txt
+<pre><code>&gt;seq1
+ATCCCCCCC
+&gt;seq2
+ATCTCTCT
 </code></pre>
 
-<p>Sum column 1 of file.txt:</p>
+<p>Once the file is linearized, count the lines again like so:</p>
 
-<pre><code>awk '{sum+=$1} END {print sum}' file.txt
+<pre><code class="language-bash">$ wc -l linearized_GCA_002443195.1_AflaGuard_genomic.fna
 </code></pre>
 
-<p>Compute the mean of column 2:</p>
-
-<pre><code>awk '{x+=$2}END{print x/NR}' file.txt
+<pre><code>196 linearized_GCA_002443195.1_AflaGuard_genomic.fna
 </code></pre>
 
-<p>Keep only top bit scores in blast hits (best bit score only):</p>
+<p>BOOM!! You have linearized a .fasta file.  This is very helpful to manipulate the file and get metrics and regular expressions.</p>
 
-<pre><code>awk '{ if(!x[$1]++) {print $0; bitscore=($14-1)} else { if($14&gt;bitscore) print $0} }' blastout.txt
+<p>Let&rsquo;s make sure the file was correctly linearized by counting the number of fasta headers in the original file. The count should give <sup>196</sup>&frasl;<sub>2</sub> = 98. Let&rsquo;s check!!</p>
+
+<pre><code class="language-bash">$ grep -c &quot;&gt;&quot; GCA_002443195.1_AflaGuard_genomic.fna
 </code></pre>
 
-<p>Keep only top bit scores in blast hits (5 less than the top):</p>
-
-<pre><code>awk '{ if(!x[$1]++) {print $0; bitscore=($14-6)} else { if($14&gt;bitscore) print $0} }' blastout.txt
+<pre><code>98
 </code></pre>
 
-<p>Split a multi-FASTA file into individual FASTA files:</p>
+<p>GREAT, you just linearized a <code>fasta</code> file. Now let&rsquo;s get some metrics.</p>
 
-<pre><code>awk '/^&gt;/{s=++d&quot;.fa&quot;} {print &gt; s}' multi.fa
-</code></pre>
-
-<p>Output sequence name and its length for every sequence within a fasta file:</p>
-
-<pre><code>cat file.fa | awk '$0 ~ &quot;&gt;&quot; {print c; c=0;printf substr($0,2,100) &quot;\t&quot;; } $0 !~ &quot;&gt;&quot; {c+=length($0);} END { print c; }'
-</code></pre>
-
-<p>Print everything except the first line</p>
-
-<pre><code>awk 'NR&gt;1' input.txt
-</code></pre>
-
-<p>Print rows 20-80:</p>
-
-<pre><code>awk 'NR&gt;=20&amp;&amp;NR&lt;=80' input.txt
-</code></pre>
-
-<p>Calculate the sum of column 2 and 3 and put it at the end of a row:</p>
-
-<pre><code>awk '{print $0,$2+$3}' input.txt
-</code></pre>
-
-<p>Calculate the mean length of reads in a fastq file:</p>
-
-<pre><code>awk 'NR%4==2{sum+=length($0)}END{print sum/(NR/4)}' input.fastq 
-</code></pre>
-
-<h2 id="basic-sed">Basic SED</h2>
+<h3 id="identifying-patterns-in-fasta-files-with-awk">Identifying patterns in <code>fasta</code> files with <code>awk</code></h3>
 
 <p>[<a href="#contents">back to top</a>]</p>
 
-<p>Replace all occurances of <code>foo</code> with <code>bar</code> in file.txt:</p>
+<p>An important pattern to find are those nucleotides that have not been identified yet due to low quality sequencing. We might want to eliminate <code>contigs</code> or <code>scaffolds</code> containing these <code>NNNN</code> patterns since they are not useful for downstream analyses (this varies depending on the researcher&rsquo;s needs). Let&rsquo;s check:</p>
 
-<pre><code>sed 's/foo/bar/g' file.txt
+<pre><code class="language-bash">$ awk '/NNNNN/{ print $0 }' linearized_GCA_002443195.1_AflaGuard_genomic.fna | wc -l
 </code></pre>
 
-<p>Trim leading whitespaces and tabulations in file.txt:</p>
-
-<pre><code>sed 's/^[ \t]*//' file.txt
+<pre><code>32
 </code></pre>
 
-<p>Trim trailing whitespaces and tabulations in file.txt:</p>
+<p>So, 32 out of 98 contigs have some sort of <code>NNNNN</code> patterns of at least 5 Ns.</p>
 
-<pre><code>sed 's/[ \t]*$//' file.txt
+<p>Let&rsquo;s get the sequence lengths of the current scaffolds</p>
+
+<pre><code class="language-bash">$ cat linearized_GCA_002443195.1_AflaGuard_genomic.fna  | awk 'NR%2==0' | awk '{print length($1)}'
 </code></pre>
 
-<p>Trim leading and trailing whitespaces and tabulations in file.txt:</p>
+<ul>
+<li><p>What is happening above is that <code>NR%2==0</code> is requesting that every even line in the file is printed, then these lines are piped into another awk that gives the length of the sequence.</p></li>
 
-<pre><code>sed 's/^[ \t]*//;s/[ \t]*$//' file.txt
+<li><p>We can also redirect the output to a new file.</p></li>
+</ul>
+
+<pre><code class="language-bash">$ cat linearized_GCA_002443195.1_AflaGuard_genomic.fna  | awk 'NR%2==0' | awk '{print length($1)}' &gt; read_dist_GCA_002443195.1_AflaGuard_genomic.fna
 </code></pre>
 
-<p>Delete blank lines in file.txt:</p>
+<p>Now let&rsquo;s check the read distribution file</p>
 
-<pre><code>sed '/^$/d' file.txt
+<pre><code class="language-bash">$ head -n 5 read_dist_GCA_002443195.1_AflaGuard_genomic.fna
 </code></pre>
 
-<p>Delete everything after and including a line containing <code>EndOfUsefulData</code>:</p>
+<p>It appears like some scaffolds have 4 million nucleotides</p>
 
-<pre><code>sed -n '/EndOfUsefulData/,$!p' file.txt
+<pre><code>4471384
+4150194
+2714413
+2659415
+2557007
 </code></pre>
 
-<p>Convert a FASTQ file to FASTA:</p>
+<blockquote>
+<h4 id="task-3">Task 3</h4>
 
-<pre><code>sed -n '1~4s/^@/&gt;/p;2~4p' file.fq &gt; file.fa
+<p>[<a href="#contents">back to top</a>]
+Linearize the fasta file <code>GCA_000006275.2_JCVI-afl1-v2.0_genomic.fna</code> and count the number of nucleotides on each scaffold.</p>
+</blockquote>
+
+<pre><code class="language-bash">$ bash linearize.sh GCA_000006275.2_JCVI-afl1-v2.0_genomic.fna
+$ cat linearized_GCA_000006275.2_JCVI-afl1-v2.0_genomic.fna  | awk 'NR%2==0' | awk '{print length($1)}' &gt; read_dist_GCA_000006275.2_JCVI-afl1-v2.0_genomic.fna
 </code></pre>
 
-<p>Extract every 4th line starting at the second line (extract the sequence from FASTQ file):</p>
+<p>Once you have both files let&rsquo;s get the shortest contig lenghts:</p>
 
-<pre><code>sed -n '2~4p' file.fq
+<pre><code class="language-bash">$ sort -n read_dist_GCA_002443195.1_AflaGuard_genomic.fna | head -n 1
+$ sort -n read_dist_GCA_000006275.2_JCVI-afl1-v2.0_genomic.fna | head -n 1
 </code></pre>
 
-<h2 id="pipes-with-awk">Pipes with AWK</h2>
+<blockquote>
+<h4 id="task-4">Task 4</h4>
+
+<p>[<a href="#contents">back to top</a>]
+Obtain the largest contig length on both genomes</p>
+</blockquote>
+
+<h2 id="annotation-files-and-awk">Annotation files and <code>awk</code></h2>
 
 <p>[<a href="#contents">back to top</a>]</p>
 
-<p>Returns all lines on Chr 1 between 1MB and 2MB in file.txt. (assumes) chromosome in column 1 and position in column 3 (this same concept can be used to return only variants that above specific allele frequencies):</p>
+<p>Annotation files of these genomes contain information about the genes that the nucleotides encode. We will be doing some basic filtering with <code>awk</code> to find genes of interest.</p>
 
-<pre><code>cat file.txt | awk '$1==&quot;1&quot;' | awk '$3&gt;=1000000' | awk '$3&lt;=2000000'
+<p>First let&rsquo;s move to the <code>annotations</code> directory</p>
+
+<pre><code class="language-bash">$ cd ../annotations
 </code></pre>
 
-<p>Basic sequence statistics. Print total number of reads, total number unique reads, percentage of unique reads, most abundant sequence, its frequency, and percentage of total in file.fq:</p>
+<p><strong>We will be working on the annotations of the same two genomes that we used for counting the length of each scaffold.</strong></p>
 
-<pre><code>cat myfile.fq | awk '((NR-2)%4==0){read=$1;total++;count[read]++}END{for(read in count){if(!max||count[read]&gt;max) {max=count[read];maxRead=read};if(count[read]==1){unique++}};print total,unique,unique*100/total,maxRead,count[maxRead],count[maxRead]*100/total}'
+<p>Important information about <code>gff</code> files can be found online <a href="https://uswest.ensembl.org/info/website/upload/gff.html">here</a></p>
+
+<p>What is most important about these files is that they usually have 9 columns.</p>
+
+<table>
+<thead>
+<tr>
+<th>Position index</th>
+<th>Position name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>sequence</td>
+<td>The name of the sequence where the feature is located.</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>source</td>
+<td>Keyword identifying the source of the feature, like a program (e.g. Augustus or RepeatMasker) or an organization (like TAIR).</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>feature</td>
+<td>The feature type name, like &ldquo;gene&rdquo; or &ldquo;exon&rdquo;. In a well structured GFF file, all the children features always follow their parents in a single block (so all exons of a transcript are put after their parent &ldquo;transcript&rdquo; feature line and before any other parent transcript line). In GFF3, all features and their relationships should be compatible with the standards released by the Sequence Ontology Project.</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>start</td>
+<td>Genomic start of the feature, with a 1-base offset. This is in contrast with other 0-offset half-open sequence formats, like BED files.</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>end</td>
+<td>Genomic end of the feature, with a 1-base offset. This is the same end coordinate as it is in 0-offset half-open sequence formats, like BED files.[citation needed]</td>
+</tr>
+
+<tr>
+<td>6</td>
+<td>score</td>
+<td>Numeric value that generally indicates the confidence of the source on the annotated feature. A value of &ldquo;.&rdquo; (a dot) is used to define a null value.</td>
+</tr>
+
+<tr>
+<td>7</td>
+<td>strand</td>
+<td>Single character that indicates the Sense (molecular biology) strand of the feature; it can assume the values of &ldquo;+&rdquo; (positive, or 5&rsquo;-&gt;3&rsquo;), &ldquo;-&rdquo;, (negative, or 3&rsquo;-&gt;5&rsquo;), &ldquo;.&rdquo; (undetermined).</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>frame</td>
+<td>(GTF, GFF2) or phase (GFF3) Frame or phase of CDS features; it can be either one of 0, 1, 2 (for CDS features) or &ldquo;.&rdquo; (for everything else). Frame and Phase are not the same, See following subsection.</td>
+</tr>
+
+<tr>
+<td>9</td>
+<td>Attributes</td>
+<td>All the other information pertaining to this feature. The format, structure and content of this field is the one which varies the most between the three competing file formats</td>
+</tr>
+</tbody>
+</table>
+
+<p>It would be good if we first explore the header:</p>
+
+<pre><code class="language-bash">$ head -n 5 GCA_000006275.2_JCVI-afl1-v2.0_genomic.gff
 </code></pre>
 
-<p>Convert a VCF file to a BED file
-sed -e &rsquo;s/chr//&rsquo; file.vcf | awk &lsquo;{OFS=&rdquo;\t&rdquo;; if (!/^#/){print $1,$2-1,$2,$4&rdquo;/&ldquo;$5,&rdquo;+&ldquo;}}&rsquo;</p>
+<p>The header contains a lot of information about generalities of the annotation and the genome itself. We must skip these first lines. They are usually not tab-delimited.</p>
 
-<h2 id="sort-uniq-cut-etc">sort, uniq, cut, etc.</h2>
+<p>The best way to do it is just by targetting lines of interest, for example I am interested in aflatoxin genes. Therefore I will <code>grep</code> the file for the pattern <code>aflatoxin</code>.</p>
+
+<pre><code class="language-bash">$ grep -i &quot;aflatoxin&quot; GCA_000006275.2_JCVI-afl1-v2.0_genomic.gff
+</code></pre>
+
+<p>Since I am interested only on those genes I will redirect the output.</p>
+
+<pre><code class="language-bash">$ grep -i &quot;aflatoxin&quot; GCA_000006275.2_JCVI-afl1-v2.0_genomic.gff &gt; aflatoxin_genes.gff
+</code></pre>
+
+<p>Now let&rsquo;s analyze by column. Usually the word <code>aflatoxin</code> should be found in the <code>Attributes</code> column which is column 9. So I can also get those same lines by doing this:</p>
+
+<p>Print each line where the 9th field is similar to <code>aflatoxin</code>:</p>
+
+<pre><code class="language-bash">$ awk -F &quot;\t&quot; '$9 ~ &quot;aflatoxin&quot;' GCA_000006275.2_JCVI-afl1-v2.0_genomic.gff
+</code></pre>
+
+<p>Now let&rsquo;s check the difference between <code>grep</code> and <code>awk</code></p>
+
+<pre><code class="language-bash">$ grep -i &quot;aflatoxin&quot; GCA_000006275.2_JCVI-afl1-v2.0_genomic.gff | wc -l
+$ awk -F &quot;\t&quot; '$9 ~ &quot;aflatoxin&quot;' GCA_000006275.2_JCVI-afl1-v2.0_genomic.gff | wc -l
+</code></pre>
+
+<p>We must get the same result for both which is 107 entries.</p>
+
+<p>We have already redirected the aflatoxin annotations to a separate file. Now let&rsquo;s play with that file.</p>
+
+<p>We can get all the positive sense <code>CDS</code> and count them</p>
+
+<pre><code class="language-bash">$ awk -F &quot;\t&quot; '$7 == &quot;+&quot;' aflatoxin_genes.gff | wc -l
+</code></pre>
+
+<pre><code>45
+</code></pre>
+
+<blockquote>
+<h4 id="task-5">Task 5</h4>
+
+<p>[<a href="#contents">back to top</a>]
+Count the number of <code>CDS</code> in the aflatoxin annotation file</p>
+</blockquote>
+
+<h2 id="extras-with-gff-files">Extras with <code>gff</code> files</h2>
 
 <p>[<a href="#contents">back to top</a>]</p>
 
-<p>Number each line in file.txt:</p>
+<p><strong>Print all sequences annotated in a GFF3 file: This command will work only if we use the original gff file.</strong></p>
 
-<pre><code>cat -n file.txt
+<pre><code class="language-bash">$ cut -s -f 1,9 GCA_000006275.2_JCVI-afl1-v2.0_genomic.gff | grep $'\t' | cut -f 1 | sort | uniq
 </code></pre>
 
-<p>Count the number of unique lines in file.txt</p>
+<p><strong>Determine all feature types annotated in a GFF3 file.</strong></p>
 
-<pre><code>cat file.txt | sort -u | wc -l
+<pre><code class="language-bash">$ grep -v '^#' GCA_000006275.2_JCVI-afl1-v2.0_genomic.gff | cut -s -f 3 | sort | uniq
 </code></pre>
 
-<p>Find lines shared by 2 files (assumes lines within file1 and file2 are unique; pipe to <code>wd -l</code> to count the <em>number</em> of lines shared):</p>
-
-<pre><code>sort file1 file2 | uniq -d
-
-# Safer
-sort -u file1 &gt; a
-sort -u file2 &gt; b
-sort a b | uniq -d
-
-# Use comm
-comm -12 file1 file2
+<pre><code>CDS
+exon
+gene
+mobile_genetic_element
+mRNA
+region
 </code></pre>
 
-<p>Sort numerically (with logs) (g) by column (k) 9:</p>
+<p>Here the <code>-v</code> in grep is saying to target the reverse of the search. If you remember whenever you did <code>head</code> in the annotation file there were many comments.  It is trying to get rid of those lines first.</p>
 
-<pre><code>sort -gk9 file.txt
+<p>The output is piped to a <code>cut</code> where the <code>-f</code> is saying to select only the column 3 and the <code>-s</code> asks to avoid printing lines that do not contain the field 3 (empty lines or entries).</p>
+
+<p><strong>Determine the number of genes annotated in a GFF3 file.</strong></p>
+
+<pre><code class="language-bash">$ grep -c $'\tgene\t' GCA_000006275.2_JCVI-afl1-v2.0_genomic.gff
 </code></pre>
 
-<p>Find the most common strings in column 2:</p>
-
-<pre><code>cut -f2 file.txt | sort | uniq -c | sort -k1nr | head
-</code></pre>
-
-<p>Pick 10 random lines from a file:</p>
-
-<pre><code>shuf file.txt | head -n 10
-</code></pre>
-
-<p>Print all possible 3mer DNA sequence combinations:</p>
-
-<pre><code>echo {A,C,T,G}{A,C,T,G}{A,C,T,G}
-</code></pre>
-
-<p>Untangle an interleaved paired-end FASTQ file. If a FASTQ file has paired-end reads intermingled, and you want to separate them into separate /1 and /2 files, and assuming the /1 reads precede the /2 reads:</p>
-
-<pre><code>cat interleaved.fq |paste - - - - - - - - | tee &gt;(cut -f 1-4 | tr &quot;\t&quot; &quot;\n&quot; &gt; deinterleaved_1.fq) | cut -f 5-8 | tr &quot;\t&quot; &quot;\n&quot; &gt; deinterleaved_2.fq
-</code></pre>
-
-<p>Take a fasta file with a bunch of short scaffolds, e.g., labeled <code>&gt;Scaffold12345</code>, remove them, and write a new fasta without them:</p>
-
-<pre><code>samtools faidx genome.fa &amp;&amp; grep -v Scaffold genome.fa.fai | cut -f1 | xargs -n1 samtools faidx genome.fa &gt; genome.noscaffolds.fa
-</code></pre>
-
-<h2 id="gff3-annotations">GFF3 Annotations</h2>
-
-<p>[<a href="#contents">back to top</a>]</p>
-
-<p>Print all sequences annotated in a GFF3 file.</p>
-
-<pre><code>cut -s -f 1,9 yourannots.gff3 | grep $'\t' | cut -f 1 | sort | uniq
-</code></pre>
-
-<p>Determine all feature types annotated in a GFF3 file.</p>
-
-<pre><code>grep -v '^#' yourannots.gff3 | cut -s -f 3 | sort | uniq
-</code></pre>
-
-<p>Determine the number of genes annotated in a GFF3 file.</p>
-
-<pre><code>grep -c $'\tgene\t' yourannots.gff3
-</code></pre>
-
-<p>Extract all gene IDs from a GFF3 file.</p>
-
-<pre><code>grep $'\tgene\t' yourannots.gff3 | perl -ne '/ID=([^;]+)/ and printf(&quot;%s\n&quot;, $1)'
-</code></pre>
-
-<p>Print length of each gene in a GFF3 file.</p>
-
-<pre><code>grep $'\tgene\t' yourannots.gff3 | cut -s -f 4,5 | perl -ne '@v = split(/\t/); printf(&quot;%d\n&quot;, $v[1] - $v[0] + 1)'
-</code></pre>
-
-<p>FASTA header lines to GFF format (assuming the length is in the header as an appended &ldquo;_length&rdquo; as in <a href="http://www.ebi.ac.uk/~zerbino/velvet/">Velvet</a> assembled transcripts):</p>
-
-<pre><code>grep '&gt;' file.fasta | awk -F &quot;_&quot; 'BEGIN{i=1; print &quot;##gff-version 3&quot;}{ print $0&quot;\t BLAT\tEXON\t1\t&quot;$10&quot;\t95\t+\t.\tgene_id=&quot;$0&quot;;transcript_id=Transcript_&quot;i;i++ }' &gt; file.gff
+<pre><code>13485
 </code></pre>
 
 
@@ -913,38 +1038,21 @@ comm -12 file1 file2
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
             
         
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
                     
             
         
@@ -962,9 +1070,6 @@ comm -12 file1 file2
                     
                     
 
-                    
-            
-        
                     
                         
             
@@ -1006,6 +1111,58 @@ comm -12 file1 file2
             
                 
                     
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
                 
                 
 
@@ -1043,10 +1200,10 @@ comm -12 file1 file2
 
 
         
-            <a class="nav nav-prev" href="/afternoon/terminology/" title="Terminology"> <i class="fa fa-chevron-left"></i></a>
+            <a class="nav nav-prev" href="/afternoon/data_acquisition/" title="Data Acquisition"> <i class="fa fa-chevron-left"></i></a>
         
         
-            <a class="nav nav-next" href="/afternoon/data_acquisition/" title="Data Acquisition" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+            <a class="nav nav-next" href="/afternoon/my_first_script/" title="My first bash script" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 
@@ -1055,20 +1212,20 @@ comm -12 file1 file2
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1520956824"></script>
-    <script src="/js/perfect-scrollbar.min.js?1520956824"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1520956824"></script>
-    <script src="/js/jquery.sticky.js?1520956824"></script>
-    <script src="/js/featherlight.min.js?1520956824"></script>
-    <script src="/js/html5shiv-printshiv.min.js?1520956824"></script>
-    <script src="/js/highlight.pack.js?1520956824"></script>
+    <script src="/js/clipboard.min.js?1521260247"></script>
+    <script src="/js/perfect-scrollbar.min.js?1521260247"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1521260247"></script>
+    <script src="/js/jquery.sticky.js?1521260247"></script>
+    <script src="/js/featherlight.min.js?1521260247"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1521260247"></script>
+    <script src="/js/highlight.pack.js?1521260247"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom.71422.js?1520956824"></script>
-    <script src="/js/learn.js?1520956824"></script>
-    <script src="/js/hugo-learn.js?1520956824"></script>
+    <script src="/js/modernizr.custom.71422.js?1521260247"></script>
+    <script src="/js/learn.js?1521260247"></script>
+    <script src="/js/hugo-learn.js?1521260247"></script>
 
-    <link href="/mermaid/mermaid.css?1520956824" type="text/css" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1520956824"></script>
+    <link href="/mermaid/mermaid.css?1521260247" type="text/css" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1521260247"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
