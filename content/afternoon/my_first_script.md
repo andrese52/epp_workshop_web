@@ -4,9 +4,24 @@ weight: 4
 chapter: false
 pre: "<b>3.4 </b>"
 ---
-### Building our first script
+
+## Contents
+
+- [Introduction](#intro)
+- [My First script](#my-first-script)
+- [Tips for `nano`](#tips-nano)
+- [Task 6](#task-6)
+- [Using the TORQUE scheduler to submit jobs in Cowboy HPC](#using-the-torque-scheduler-to-submit-jobs-in-cowboy-hpc)
+
+
+### Intro
+[[back to top](#contents)]
+
 The native language of Linux for its terminal is `bash` and we can write  scripts and create a small program that does all the above for us with  single line in bash. First, we need to create a file with `nano` which  is a text editor that is also installed in Linux by default. There are  other text editors like `vim`. Using `nano` we can create a `.txt` like 
 so: 
+
+### My First script
+[[back to top](#contents)]
 
 First let's move to our `afternoon` folder and create a folder called `scripts` and `cd` to `scripts`
 
@@ -48,7 +63,10 @@ $ nano myfirstscript.txt
 Hit `Ctrl+X` then hit `Y`
 
 
-### Important tips about using `nano`
+### Tips `nano`
+[[back to top](#contents)]
+
+
 - Your mouse will NOT work at all in the terminal, so please do not try  to click in different parts of the `nano editor` to edit the document.
  
  {{< figure src="https://media.giphy.com/media/pFwRzOLfuGHok/giphy.gif" 
@@ -98,6 +116,7 @@ $ ./myfirstscript.sh
 Do you want to try something more difficult: YASSSS 
 
 ### Building a script that contains `arguments`
+[[back to top](#contents)]
 
 Many scripts are created to facilitate the user typing the same code over and over again. Most of the scripts have inputs and outputs. In our previous script we did not have any of those. 
 
@@ -146,13 +165,16 @@ Hit `Y` to save and then let's run the program with arguments
 
 
 > #### TASK 6
+>[[back to top](#contents)]
 > Create a Script that takes your `first name` and your `last name` as `arguments` and print them in the reverse order. 
 
 
 Ideally, you can use all the information given in this small workshop to use different manipulation techniques and put them in a `script` that you can run on an everyday basis. 
 
 
-### Using the `TORQUE` scheduler to submit jobs in pistol pete HPC
+### Using the `TORQUE` scheduler to submit jobs in cowboy HPC
+[[back to top](#contents)]
+
 
 Although we have been using the `login` nodes throughout this workshop. It is very very important to understand that computing intensive jobs **must** be submitted through the HPC scheduler. Now I will teach you how to do it. 
 

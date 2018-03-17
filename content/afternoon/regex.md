@@ -8,14 +8,21 @@ pre: "<b>3.3 </b>"
 
 ## Contents
 
-- [Basic awk](#basic-awk)
-- [Basic sed](#basic-sed)
-- [sort, uniq, cut, etc.](#sort-uniq-cut-etc)
-- [GFF3 Annotations](#gff3-annotations)
+- [Intro](#intro)
+- [Basic `awk`](#basic-awk)
+- [Identifying patterns in fasta files with awk](#identifying-patterns-in-fasta-files-with-awk)
+- [Task 3](#task-3)
+- [Task 4](#task-4)
+- [Annotation files and awk](#annotation-files-and-awk)
+- [Task 5](#task-5)
+- [Extras with `gff` files](#extras-with-gff-files)
 
 
 
 ## Intro
+[[back to top](#contents)]
+
+
 A regular expression, regex or regexp (sometimes called a rational expression) is, in theoretical computer science and formal language theory, a sequence of characters that define a search pattern. Usually this pattern is then used by string searching algorithms for "find" or "find and replace" operations on strings.
 
 Multiple tools in LINUX can be utilized to find regular expressions. The most common one is `grep` which you already used during the morning. 
@@ -108,6 +115,8 @@ GREAT, you just linearized a `fasta` file. Now let's get some metrics.
 
 
 ### Identifying patterns in `fasta` files with `awk`
+[[back to top](#contents)]
+
 
 An important pattern to find are those nucleotides that have not been identified yet due to low quality sequencing. We might want to eliminate `contigs` or `scaffolds` containing these `NNNN` patterns since they are not useful for downstream analyses (this varies depending on the researcher's needs). Let's check:
 
@@ -150,6 +159,7 @@ It appears like some scaffolds have 4 million nucleotides
 	2557007
 	
 > #### Task 3
+> [[back to top](#contents)]
 > Linearize the fasta file `GCA_000006275.2_JCVI-afl1-v2.0_genomic.fna` and count the number of nucleotides on each scaffold.
 
 
@@ -169,6 +179,7 @@ $ sort -n read_dist_GCA_000006275.2_JCVI-afl1-v2.0_genomic.fna | head -n 1
 
 
 > #### Task 4
+>[[back to top](#contents)]
 > Obtain the largest contig length on both genomes 
 
 ## Annotation files and `awk`
@@ -259,26 +270,44 @@ $ awk -F "\t" '$7 == "+"' aflatoxin_genes.gff | wc -l
 	45
 	
 > #### Task 5
+>[[back to top](#contents)]
 > Count the number of `CDS` in the aflatoxin annotation file
 
 
 
 ## Extras with `gff` files
+[[back to top](#contents)]
 
-Print all sequences annotated in a GFF3 file.
+**Print all sequences annotated in a GFF3 file: This command will work only if we use the original gff file.**
 
-    cut -s -f 1,9 yourannots.gff3 | grep $'\t' | cut -f 1 | sort | uniq
+```bash
+$ cut -s -f 1,9 GCA_000006275.2_JCVI-afl1-v2.0_genomic.gff | grep $'\t' | cut -f 1 | sort | uniq
+```
 
+**Determine all feature types annotated in a GFF3 file.**
+```bash
+$ grep -v '^#' GCA_000006275.2_JCVI-afl1-v2.0_genomic.gff | cut -s -f 3 | sort | uniq
+```
 
-Determine all feature types annotated in a GFF3 file.
+	CDS
+	exon
+	gene
+	mobile_genetic_element
+	mRNA
+	region
 
-    grep -v '^#' yourannots.gff3 | cut -s -f 3 | sort | uniq
+Here the `-v` in grep is saying to target the reverse of the search. If you remember whenever you did `head` in the annotation file there were many comments.  It is trying to get rid of those lines first. 
 
+The output is piped to a `cut` where the `-f` is saying to select only the column 3 and the `-s` asks to avoid printing lines that do not contain the field 3 (empty lines or entries).
+ 
 
-Determine the number of genes annotated in a GFF3 file.
+**Determine the number of genes annotated in a GFF3 file.**
+```bash
+$ grep -c $'\tgene\t' GCA_000006275.2_JCVI-afl1-v2.0_genomic.gff
+```
 
-    grep -c $'\tgene\t' yourannots.gff3
+	13485
 
-
+	
 
 
