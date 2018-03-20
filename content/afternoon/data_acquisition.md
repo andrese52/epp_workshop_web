@@ -11,8 +11,10 @@ pre: "<b>3.2 </b>"
 - [Back to the terminal](#back-to-the-terminal)
 - [Retrieving my first ftp file](#retrieving-my-first-ftp-file)
 - [Filtering Data](#filtering-data)
+- [Loops and variables in  Linux](#loops-and-variables-in-linux)
 - [Task 1](#task-1)
 - [Task 2](#task-2)
+
 
 ## Intro
 [[back to top](#contents)]
@@ -201,7 +203,45 @@ $ awk -F'\t' '$12 == "Chromosome"' aspergillus_assemblies.txt | wc -l
 
 We are piping the output of `awk` to a `wc` command that is the famous `word count`. You can count how many lines are found in a file with `wc -l`.
 
-Unfortunately, we have `0` crhomosomal assemblies. Now let's try Scaffolds. 
+Unfortunately, we have `0` crhomosomal assemblies. Now let's try Scaffolds.
+
+
+### Loops and variables in  Linux
+[[back to top](#contents)]
+
+Assigning values to variables is really easy, just type the following:
+
+```bash
+a="Andres"
+```
+Now if you want to retrieve your variable and print it to the prompt do the following.
+
+
+```bash
+echo $a
+```
+
+
+For the next task you need to know how loops work in linux.
+
+Let's try some, but first let's get some variables assigned
+
+
+```bash
+a="like"
+b="this"
+c="workshop"
+```
+
+```bash
+for i in $a $b $c
+do
+echo $i
+done
+```
+
+
+
 
 > #### TASK 1:
 
@@ -293,11 +333,12 @@ $ mkdir genomes
 
 Now finally let us retrieve those files with the following loop:
 
+**Very important note:** Make sure that the space between `wget -P genome/` and `$p/*.fna.gz` is present, otherwise `wget` will not work. Can you guess why??
 
 ```bash
 while read p; do
   echo $p
-wget -P genomes/$p/*.fna.gz
+wget -P genomes/ $p/*.fna.gz
 done <ftp-ids.txt
 ```
 
@@ -366,6 +407,9 @@ Notice that the directory size increased to 247 MB.
 $ mkdir ../annotations
 ```
 What would you change in the following code to get gff files
+
+**Very important note:** Make sure that the space between `wget -P annotations/` and `$p/*.gff.gz` is present, otherwise `wget` will not work. Can you guess why??
+
 ```bash
 while read p; do
 	echo $p
@@ -392,11 +436,12 @@ Ok try the loop with `gff` but first:
 $ cd ..
 ```
  Then:
+**Very important note:** Make sure that the space between `wget -P annotations/` and `$p/*.gff.gz` is present, otherwise `wget` will not work. Can you guess why??
 
 ```bash
 while read p; do
 	echo $p
-	wget -P annotations/$p/*.gff.gz
+	wget -P annotations/ $p/*.gff.gz
 done <ftp-ids.txt
 ```
 
